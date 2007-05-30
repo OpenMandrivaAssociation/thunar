@@ -1,121 +1,97 @@
 %define capsname Thunar
 %define iconname thunar.png
 
-%define version     0.8.0
-%define release     2
-%define __libtoolize    /bin/true
-
-%define lib_major   1
-%define lib_minor   2
-%define lib_name    %mklibname thunar %{lib_major}_%{lib_minor}
+%define major 2
+%define libname %mklibname thunar %{major}
 
 
-Summary:    File manager for the Xfce Desktop Environment
-Name:       thunar
-Version:    %{version}
-Release:    %mkrel %{release}
-License:    GPL
-URL:        http://thunar.xfce.org/
-Source0:    %{capsname}-%{version}.tar.bz2
-Group:      Graphical desktop/Xfce
-BuildRoot:  %{_tmppath}/%{name}-root
-#BuildRequires: xfce-mcs-manager-devel >= %{version}
-BuildRequires:  libgdk_pixbuf2.0-devel
-BuildRequires:  libxml2-devel >= 2.4.0
-BuildRequires:  exo-devel
-BuildRequires:  ImageMagick
-BuildRequires:  gamin-devel
-BuildRequires:  hal-devel
-BuildRequires:  perl-XML-Parser
-BuildRequires:  desktop-file-utils
-BuildRequires:  dbus-glib-devel
-BuildRequires: desktop-file-utils
-Requires:   shared-mime-info >= 0.15
-Requires(post):   desktop-file-utils >= 0.10
-Requires(postun):   desktop-file-utils >= 0.10
-Requires:   exo
-Requires:   thunar-volman
-Obsoletes: xffm
+Summary:	File manager for the Xfce Desktop Environment
+Name:		thunar
+Version:	0.8.0
+Release:	%mkrel 3
+License:	GPL
+Group:		Graphical desktop/Xfce
+URL:		http://thunar.xfce.org
+Source0:	%{capsname}-%{version}.tar.bz2
+BuildRequires:	libgdk_pixbuf2.0-devel
+BuildRequires:	libxml2-devel >= 2.4.0
+BuildRequires:	exo-devel
+BuildRequires:	gamin-devel
+BuildRequires:	hal-devel
+BuildRequires:	perl(XML::Parser)
+BuildRequires:	desktop-file-utils
+BuildRequires:	dbus-glib-devel
+BuildRequires:	desktop-file-utils
+Requires:	shared-mime-info >= 0.15
+Requires(post):	desktop-file-utils >= 0.10
+Requires(postun): desktop-file-utils >= 0.10
+Requires:	exo
+Requires:	thunar-volman
+Obsoletes:	xffm
+BuildRoot:	%{_tmppath}/%{name}-%{version}-buildroot
 
 %description
 Thunar is a file manager for the Xfce Desktop Environment.
 
-%package -n %{lib_name}
-Summary:        Libraries for the thunar filemanager
-Group:          Graphical desktop/Xfce
+%package -n %{libname}
+Summary:	Libraries for the thunar filemanager
+Group:		Graphical desktop/Xfce
 
-%description -n %{lib_name}
+%description -n %{libname}
 Libraries for the thunar filemanager.
 
-%package -n %{lib_name}-devel
-Summary:        Development files for the thunar filemanager
-Group:          Development/Other
-Provides:   thunar-devel
-Requires:   %{lib_name} = %{version}
+%package -n %{libname}-devel
+Summary:	Development files for the thunar filemanager
+Group:		Development/Other
+Provides:	%{name}-devel
+Requires:	%{libname} = %{version}-%{release}
 
-%description -n %{lib_name}-devel
+%description -n %{libname}-devel
 Development files for the thunar filemanager.
 
 %prep
-%setup -q -n %{capsname}-%{version}
-
+%setup -qn %{capsname}-%{version}
 
 %build
-%configure2_5x --sysconfdir=%_sysconfdir/X11
+%configure2_5x \
+    --sysconfdir=%{_sysconfdir}/X11
+
 %make
 
 %install
-rm -rf $RPM_BUILD_ROOT
+rm -rf %{buildroot}
 %makeinstall_std
-
-mkdir -p %{buildroot}{%{_miconsdir},%{_iconsdir},%{_liconsdir},%{_menudir}}
-convert icons/48x48/Thunar.png -geometry 48x48 %{buildroot}%{_liconsdir}/%{iconname}
-convert icons/48x48/Thunar.png -geometry 32x32 %{buildroot}%{_iconsdir}/%{iconname}
-convert icons/48x48/Thunar.png -geometry 16x16 %{buildroot}%{_miconsdir}/%{iconname}
-
-# Menu
-(cd $RPM_BUILD_ROOT
-cat > .%{_menudir}/%name <<EOF
-?package(%name):\
-command="%{_bindir}/%{name}"\
-icon="%{iconname}"\
-title="Thunar"\
-longtitle="Thunar is a filemanager for Xfce."\
-needs="x11"\
-section="System/File Tools" \
-xdg="true"
-EOF
-)
 
 desktop-file-install --vendor="" \
 --remove-category="Application" \
 --add-category="X-MandrivaLinux-System-FileTools" \
 --add-category="FileManager" \
 --add-only-show-in="XFCE" \
---dir $RPM_BUILD_ROOT%{_datadir}/applications $RPM_BUILD_ROOT%{_datadir}/applications/*
+--dir %{buildroot}%{_datadir}/applications %{buildroot}%{_datadir}/applications/*
 
 # Remove unneeded files
-rm -f $RPM_BUILD_ROOT%{_libdir}/thunarx-1/thunar-uca.la
-rm -f $RPM_BUILD_ROOT%{_datadir}/doc/Thunar/README.thunarrc
-rm -f $RPM_BUILD_ROOT%{_datadir}/doc/Thunar/README.volumes
+rm -f %{buildroot}%{_libdir}/thunarx-1/thunar-uca.la
+rm -f %{buildroot}%{_datadir}/doc/Thunar/README.thunarrc
+rm -f %{buildroot}%{_datadir}/doc/Thunar/README.volumes
 
 %find_lang %{capsname}
 
 %clean
-rm -rf $RPM_BUILD_ROOT
+rm -rf %{buildroot}
 
 %post
-%update_menus
+%{update_menus}
+%{update_desktop_database}
 %update_icon_cache hicolor
 
 %postun
-%clean_menus
+%{clean_menus}
+%{clean_desktop_database}
 %clean_icon_cache hicolor
 
-%post -n %{lib_name} -p /sbin/ldconfig
+%post -n %{libname} -p /sbin/ldconfig
 
-%postun -n %{lib_name} -p /sbin/ldconfig
-
+%postun -n %{libname} -p /sbin/ldconfig
 
 %files -f %{capsname}.lang
 %defattr(-,root,root)
@@ -124,7 +100,7 @@ rm -rf $RPM_BUILD_ROOT
 %config(noreplace) %{_sysconfdir}/X11/xdg/Thunar/uca.xml
 %{_bindir}/*
 %{_datadir}/applications/*
-%{_datadir}/icons/*
+%{_iconsdir}/hicolor/*
 %{_datadir}/pixmaps/*
 %{_datadir}/dbus-1/services/*
 %{_datadir}/doc/Thunar
@@ -140,19 +116,13 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/thunar-vfs-pixbuf-thumbnailer-1
 %{_libdir}/thunar-vfs-update-thumbnailers-cache-1
 %{_mandir}/man1/Thunar.1.bz2
-%{_menudir}/%{name}
-%{_miconsdir}/%{iconname}
-%{_iconsdir}/%{iconname}
-%{_liconsdir}/%{iconname}
 %{_datadir}/thumbnailers/thunar-vfs-font-thumbnailer-1.desktop
 
-
-%files -n %{lib_name}
+%files -n %{libname}
 %defattr(-,root,root)
-%{_libdir}/lib*.so.*
+%{_libdir}/lib*.so.%{major}*
 
-
-%files -n %{lib_name}-devel
+%files -n %{libname}-devel
 %defattr(-,root,root)
 %dir %{_includedir}/thunar-vfs-1
 %{_includedir}/thunar-vfs-1/*
@@ -161,7 +131,3 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/lib*.so
 %{_libdir}/lib*.*a
 %{_libdir}/pkgconfig/*.pc
-
-
-
-
