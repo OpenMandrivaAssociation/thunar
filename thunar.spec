@@ -2,7 +2,8 @@
 %define iconname thunar.png
 
 %define major 2
-%define libname %mklibname thunar %{major}
+%define apiversion 1
+%define libname %mklibname %{name} %{apiversion} %{major}
 
 
 Summary:	File manager for the Xfce Desktop Environment
@@ -120,7 +121,7 @@ rm -rf %{buildroot}
 
 %files -n %{libname}
 %defattr(-,root,root)
-%{_libdir}/lib*.so.%{major}*
+%{_libdir}/*%{apiversion}.so.%{major}*
 
 %files -n %{libname}-devel
 %defattr(-,root,root)
