@@ -9,7 +9,7 @@
 Summary:	File manager for the Xfce Desktop Environment
 Name:		thunar
 Version:	0.8.0
-Release:	%mkrel 3
+Release:	%mkrel 4
 License:	GPL
 Group:		Graphical desktop/Xfce
 URL:		http://thunar.xfce.org
@@ -23,6 +23,7 @@ BuildRequires:	perl(XML::Parser)
 BuildRequires:	desktop-file-utils
 BuildRequires:	dbus-glib-devel
 BuildRequires:	desktop-file-utils
+BuildRequires:	xfce-panel-devel
 Requires:	shared-mime-info >= 0.15
 Requires(post):	desktop-file-utils >= 0.10
 Requires(postun): desktop-file-utils >= 0.10
@@ -118,6 +119,8 @@ rm -rf %{buildroot}
 %{_libdir}/thunar-vfs-update-thumbnailers-cache-1
 %{_mandir}/man1/Thunar.1.bz2
 %{_datadir}/thumbnailers/thunar-vfs-font-thumbnailer-1.desktop
+%{_libdir}/xfce4/panel-plugins/thunar-tpa
+%{_datadir}/xfce4/panel-plugins/thunar-tpa.desktop
 
 %files -n %{libname}
 %defattr(-,root,root)
