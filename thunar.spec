@@ -9,7 +9,7 @@
 Summary:	File manager for the Xfce Desktop Environment
 Name:		thunar
 Version:	0.8.0
-Release:	%mkrel 5
+Release:	%mkrel 6
 License:	GPL
 Group:		Graphical desktop/Xfce
 URL:		http://thunar.xfce.org
@@ -42,13 +42,14 @@ Group:		Graphical desktop/Xfce
 %description -n %{libname}
 Libraries for the thunar filemanager.
 
-%package -n %{libname}-devel
+%package -n %{develname}
 Summary:	Development files for the thunar filemanager
 Group:		Development/Other
-Provides:	%{name}-devel
+Provides:	%{name}-devel = %{version}-%{release}
 Requires:	%{libname} = %{version}-%{release}
+Obsoletes:	%mklibname %{name} 1 2 -d
 
-%description -n %{libname}-devel
+%description -n %{develname}
 Development files for the thunar filemanager.
 
 %prep
@@ -66,7 +67,6 @@ rm -rf %{buildroot}
 
 desktop-file-install --vendor="" \
 --remove-category="Application" \
---add-category="X-MandrivaLinux-System-FileTools" \
 --add-category="FileManager" \
 --add-only-show-in="XFCE" \
 --dir %{buildroot}%{_datadir}/applications %{buildroot}%{_datadir}/applications/*
@@ -84,11 +84,13 @@ rm -rf %{buildroot}
 %post
 %{update_menus}
 %{update_desktop_database}
+%{update_mime_database}
 %update_icon_cache hicolor
 
 %postun
 %{clean_menus}
 %{clean_desktop_database}
+%{clean_mime_database}
 %clean_icon_cache hicolor
 
 %post -n %{libname} -p /sbin/ldconfig
@@ -126,7 +128,7 @@ rm -rf %{buildroot}
 %defattr(-,root,root)
 %{_libdir}/*%{apiversion}.so.%{major}*
 
-%files -n %{libname}-devel
+%files -n %{develname}
 %defattr(-,root,root)
 %dir %{_includedir}/thunar-vfs-1
 %{_includedir}/thunar-vfs-1/*
