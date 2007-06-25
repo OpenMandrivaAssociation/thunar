@@ -4,7 +4,7 @@
 %define major 2
 %define apiversion 1
 %define libname %mklibname %{name} %{apiversion} %{major}
-
+%define develname %mklibname %{name} -d
 
 Summary:	File manager for the Xfce Desktop Environment
 Name:		thunar
