@@ -101,6 +101,7 @@ rm -rf %{buildroot}
 %defattr(-,root,root)
 %doc AUTHORS ChangeLog FAQ HACKING README THANKS TODO
 %doc docs/README.*
+%dir %{_sysconfdir}/X11/xdg/Thunar
 %config(noreplace) %{_sysconfdir}/X11/xdg/Thunar/uca.xml
 %{_bindir}/*
 %{_datadir}/applications/*
