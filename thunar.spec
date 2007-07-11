@@ -46,6 +46,7 @@ Libraries for the thunar filemanager.
 Summary:	Development files for the thunar filemanager
 Group:		Development/Other
 Provides:	%{name}-devel = %{version}-%{release}
+Provides:	lib%{name}-devel = %{version}-%{release}
 Requires:	%{libname} = %{version}-%{release}
 Obsoletes:	%mklibname %{name} 1 2 -d
 
@@ -102,6 +103,7 @@ rm -rf %{buildroot}
 %doc AUTHORS ChangeLog FAQ HACKING README THANKS TODO
 %doc docs/README.*
 %dir %{_sysconfdir}/X11/xdg/Thunar
+%dir %{_datadir}/Thunar
 %config(noreplace) %{_sysconfdir}/X11/xdg/Thunar/uca.xml
 %{_bindir}/*
 %{_datadir}/applications/*
@@ -109,7 +111,7 @@ rm -rf %{buildroot}
 %{_datadir}/pixmaps/*
 %{_datadir}/dbus-1/services/*
 %{_datadir}/doc/Thunar
-%{_datadir}//Thunar/sendto/thunar-sendto-email.desktop
+%{_datadir}/Thunar/sendto/thunar-sendto-email.desktop
 %{_libdir}/thunarx-1/thunar-uca.so
 %{_libdir}/ThunarHelp
 %{_libdir}/thunar-vfs-mime-cleaner-1
