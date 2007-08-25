@@ -66,7 +66,7 @@ Development files for the thunar filemanager.
 rm -rf %{buildroot}
 %makeinstall_std
 
-desktop-file-install --vendor="" \
+desktop-file-install \
 --remove-category="Application" \
 --add-category="FileManager" \
 --add-only-show-in="XFCE" \
