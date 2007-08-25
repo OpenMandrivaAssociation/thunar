@@ -58,7 +58,14 @@ Development files for the thunar filemanager.
 
 %build
 %configure2_5x \
-    --sysconfdir=%{_sysconfdir}/X11
+    --sysconfdir=%{_sysconfdir}/X11 \
+    --with-volume-manager=hal \
+    --enable-dbus \
+    --enable-gnome-thumbnailers \
+    --enable-startup-notification \
+    --enable-exif \
+    --enable-pcre
+    
 
 %make
 
