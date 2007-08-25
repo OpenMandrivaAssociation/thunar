@@ -122,7 +122,7 @@ rm -rf %{buildroot}
 %{_libdir}/thunar-vfs-font-thumbnailer-1
 %{_libdir}/thunar-vfs-pixbuf-thumbnailer-1
 %{_libdir}/thunar-vfs-update-thumbnailers-cache-1
-%{_mandir}/man1/Thunar.1.bz2
+%{_mandir}/man1/*
 %{_datadir}/thumbnailers/thunar-vfs-font-thumbnailer-1.desktop
 %{_libdir}/xfce4/panel-plugins/thunar-tpa
 %{_datadir}/xfce4/panel-plugins/thunar-tpa.desktop
