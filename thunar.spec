@@ -1,4 +1,4 @@
-%define capsname Thunar
+%define oname Thunar
 %define iconname thunar.png
 
 %define major 2
@@ -9,11 +9,12 @@
 Summary:	File manager for the Xfce Desktop Environment
 Name:		thunar
 Version:	0.8.0
-Release:	%mkrel 6
+Release:	%mkrel 7
 License:	GPL
 Group:		Graphical desktop/Xfce
 URL:		http://thunar.xfce.org
-Source0:	%{capsname}-%{version}.tar.bz2
+Source0:	%{oname}-%{version}.tar.bz2
+Patch0:		%{oname}-0.8.0-zombies.patch
 BuildRequires:	libgdk_pixbuf2.0-devel
 BuildRequires:	libxml2-devel >= 2.4.0
 BuildRequires:	exo-devel
@@ -54,7 +55,8 @@ Obsoletes:	%mklibname %{name} 1 2 -d
 Development files for the thunar filemanager.
 
 %prep
-%setup -qn %{capsname}-%{version}
+%setup -qn %{oname}-%{version}
+%patch0 -p1
 
 %build
 %configure2_5x \
@@ -65,7 +67,6 @@ Development files for the thunar filemanager.
     --enable-startup-notification \
     --enable-exif \
     --enable-pcre
-    
 
 %make
 
@@ -84,7 +85,7 @@ rm -f %{buildroot}%{_libdir}/thunarx-1/thunar-uca.la
 rm -f %{buildroot}%{_datadir}/doc/Thunar/README.thunarrc
 rm -f %{buildroot}%{_datadir}/doc/Thunar/README.volumes
 
-%find_lang %{capsname}
+%find_lang %{oname}
 
 %clean
 rm -rf %{buildroot}
@@ -105,7 +106,7 @@ rm -rf %{buildroot}
 
 %postun -n %{libname} -p /sbin/ldconfig
 
-%files -f %{capsname}.lang
+%files -f %{oname}.lang
 %defattr(-,root,root)
 %doc AUTHORS ChangeLog FAQ HACKING README THANKS TODO
 %doc docs/README.*
