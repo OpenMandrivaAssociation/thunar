@@ -9,7 +9,7 @@
 Summary:	File manager for the Xfce Desktop Environment
 Name:		thunar
 Version:	0.8.0
-Release:	%mkrel 7
+Release:	%mkrel 8
 License:	GPL
 Group:		Graphical desktop/Xfce
 URL:		http://thunar.xfce.org
@@ -112,7 +112,7 @@ rm -rf %{buildroot}
 %doc docs/README.*
 %dir %{_sysconfdir}/X11/xdg/Thunar
 %dir %{_datadir}/Thunar
-%config(noreplace) %{_sysconfdir}/X11/xdg/Thunar/uca.xml
+%exclude %{_sysconfdir}/X11/xdg/Thunar/uca.xml
 %{_bindir}/*
 %{_datadir}/applications/*
 %{_iconsdir}/hicolor/*
