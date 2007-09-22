@@ -75,10 +75,10 @@ rm -rf %{buildroot}
 %makeinstall_std
 
 desktop-file-install \
---remove-category="System" \
---add-category="FileManager" \
---add-only-show-in="XFCE" \
---dir %{buildroot}%{_datadir}/applications %{buildroot}%{_datadir}/applications/*
+    --remove-category="System" \
+    --add-category="FileManager" \
+    --add-only-show-in="XFCE" \
+    --dir %{buildroot}%{_datadir}/applications %{buildroot}%{_datadir}/applications/*
 
 # Remove unneeded files
 rm -f %{buildroot}%{_libdir}/thunarx-1/thunar-uca.la
