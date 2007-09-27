@@ -75,7 +75,6 @@ rm -rf %{buildroot}
 %makeinstall_std
 
 desktop-file-install \
-    --remove-category="System" \
     --add-category="FileManager" \
     --add-only-show-in="XFCE" \
     --dir %{buildroot}%{_datadir}/applications %{buildroot}%{_datadir}/applications/*
