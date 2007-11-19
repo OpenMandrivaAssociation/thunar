@@ -6,35 +6,59 @@
 %define libname %mklibname %{name} %{apiversion} %{major}
 %define develname %mklibname %{name} -d
 
-Summary:	File manager for the Xfce Desktop Environment
+Summary:	New modern file manager for the Xfce Desktop  Environment.
 Name:		thunar
 Version:	0.8.0
-Release:	%mkrel 9
-License:	GPL
+Release:	%mkrel 10
+License:	GPLv2+
 Group:		Graphical desktop/Xfce
 URL:		http://thunar.xfce.org
 Source0:	%{oname}-%{version}.tar.bz2
 Patch0:		%{oname}-0.8.0-zombies.patch
 BuildRequires:	libgdk_pixbuf2.0-devel
-BuildRequires:	libxml2-devel >= 2.4.0
 BuildRequires:	exo-devel
 BuildRequires:	gamin-devel
 BuildRequires:	hal-devel
 BuildRequires:	perl(XML::Parser)
-BuildRequires:	desktop-file-utils
 BuildRequires:	dbus-glib-devel
 BuildRequires:	desktop-file-utils
-BuildRequires:	xfce-panel-devel
+BuildRequires:	xfce4-panel-devel
+BuildRequires:	libpng-devel
+BuildRequires:	libjpeg-devel
+BuildRequires:	libpcre-devel
+BuildRequires:	libexif-devel
+BuildRequires:	libGConf2-devel
 Requires:	shared-mime-info >= 0.15
-Requires(post):	desktop-file-utils >= 0.10
-Requires(postun): desktop-file-utils >= 0.10
 Requires:	exo
 Requires:	thunar-volman
+Requires(post):	desktop-file-utils >= 0.10
+Requires(postun): desktop-file-utils >= 0.10
 Obsoletes:	xffm
 BuildRoot:	%{_tmppath}/%{name}-%{version}-buildroot
 
 %description
-Thunar is a file manager for the Xfce Desktop Environment.
+Thunar has been designed from the ground up to be fast and easy-to-use.
+Its user interface is clean and intuitive, and does not include any confusing 
+or useless options. Thunar is fast and responsive with a good start up time 
+and directory load time. Thunar is accessible using Assistive Technologies and 
+is fully standards  compliant.
+ 
+Beside the basic file management features, Thunar includes additional features 
+that set it ahead of other file managers available for the Unix/Linux desktop 
+today. For example, Thunar includes a so called Bulk Renamer that allows users 
+to easily rename multiple files at once using criterions that can be specified 
+using the available renamer plugins. Probably the most interesting renamer here 
+is the Audio Tags renamer, which generates new file names based on the tags 
+present in audio files.
+ 
+Using the Thunar Extensions Framework it is easy to extend the basic 
+functionality provided by Thunar to integrate even complex tasks into the file 
+manager, although the extension framework is still very limited in the 1.0 series, 
+and the 2.0 series will include a way more powerful plugin interface that allows to 
+adjust virtually every aspect of the file manager. But since writing extensions for 
+the file manager is still a difficult and time consuming job, the User Customizable 
+Actions plugin provides users with an easy way to extend the file and folder context 
+menus with their own custom actions.
 
 %package -n %{libname}
 Summary:	Libraries for the thunar filemanager
