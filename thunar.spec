@@ -6,7 +6,7 @@
 %define libname %mklibname %{name} %{apiversion} %{major}
 %define develname %mklibname %{name} -d
 
-Summary:	New modern file manager for the Xfce Desktop  Environment.
+Summary:	New modern file manager for the Xfce Desktop  Environment
 Name:		thunar
 Version:	0.8.0
 Release:	%mkrel 10
