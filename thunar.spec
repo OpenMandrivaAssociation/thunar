@@ -133,7 +133,7 @@ rm -rf %{buildroot}
 
 %files -f %{oname}.lang
 %defattr(-,root,root)
-%doc AUTHORS ChangeLog FAQ HACKING README THANKS TODO
+%doc AUTHORS FAQ HACKING README THANKS TODO
 %doc docs/README.*
 %dir %{_sysconfdir}/X11/xdg/Thunar
 %dir %{_datadir}/Thunar
