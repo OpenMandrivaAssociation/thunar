@@ -36,6 +36,7 @@ Requires:	thunar-volman
 Requires(post):	desktop-file-utils >= 0.10
 Requires(postun): desktop-file-utils >= 0.10
 Obsoletes:	xffm
+BuildRoot:	%{_tmppath}/%{name}-%{version}-buildroot
 
 %description
 Thunar has been designed from the ground up to be fast and easy-to-use.
