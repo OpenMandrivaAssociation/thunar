@@ -55,12 +55,12 @@ present in audio files.
 
 Using the Thunar Extensions Framework it is easy to extend the basic
 functionality provided by Thunar to integrate even complex tasks into the file
-manager, although the extension framework is still very limited in the 1.0 series,
-and the 2.0 series will include a way more powerful plugin interface that allows to
-adjust virtually every aspect of the file manager. But since writing extensions for
-the file manager is still a difficult and time consuming job, the User Customizable
-Actions plugin provides users with an easy way to extend the file and folder context
-menus with their own custom actions.
+manager, although the extension framework is still very limited in the 1.0
+series, and the 2.0 series will include a way more powerful plugin interface
+that allows to adjust virtually every aspect of the file manager. But since
+writing extensions for the file manager is still a difficult and time consuming
+job, the User Customizable Actions plugin provides users with an easy way to
+extend the file and folder context menus with their own custom actions.
 
 %package -n %{libname}
 Summary:	Libraries for the thunar filemanager
