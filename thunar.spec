@@ -30,6 +30,7 @@ BuildRequires:	libjpeg-devel
 BuildRequires:	libpcre-devel
 BuildRequires:	libexif-devel
 BuildRequires:	libGConf2-devel
+BuildRequires:	libusb-devel
 Requires:	shared-mime-info >= 0.15
 Requires:	exo
 Requires:	thunar-volman
