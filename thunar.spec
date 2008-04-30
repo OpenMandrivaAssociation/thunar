@@ -9,7 +9,7 @@
 Summary:	New modern file manager for the Xfce Desktop  Environment
 Name:		thunar
 Version:	0.9.0
-Release:	%mkrel 7
+Release:	%mkrel 8
 License:	GPLv2+
 Group:		Graphical desktop/Xfce
 URL:		http://thunar.xfce.org
@@ -20,6 +20,7 @@ Patch2:         %{oname}-0.9.0-use-eject-where-necessary.patch
 #(tpg) http://bugzilla.xfce.org/show_bug.cgi?id=3614
 # (tpg) here's the never, and probably better version of the patch https://qa.mandriva.com/show_bug.cgi?id=40230
 Patch3:		%{oname}-0.9.0-icons-extension-strip2.patch
+Patch4:		%{oname}-0.9.0-dont-die-on-dbus-disconnect.patch
 BuildRequires:	libgdk_pixbuf2.0-devel
 BuildRequires:	exo-devel
 BuildRequires:	gamin-devel
@@ -90,6 +91,7 @@ Development files for the thunar filemanager.
 %patch1 -p0
 %patch2 -p1 -b .eject
 %patch3 -p1 -b .icon
+%patch4 -p1 -b .dbus
 
 %build
 %configure2_5x \
