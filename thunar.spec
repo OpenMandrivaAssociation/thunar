@@ -146,9 +146,14 @@ rm -rf %{buildroot}
 %defattr(-,root,root)
 %doc AUTHORS FAQ HACKING README THANKS TODO
 %doc docs/README.*
+%if %mdkversion < 200900
 %dir %{_sysconfdir}/X11/xdg/Thunar
-%dir %{_datadir}/Thunar
 %exclude %{_sysconfdir}/X11/xdg/Thunar/uca.xml
+%else
+%dir %{_sysconfdir}/xdg/Thunar
+%exclude %{_sysconfdir}/xdg/Thunar/uca.xml
+%endif
+%dir %{_datadir}/Thunar
 %{_bindir}/*
 %{_datadir}/applications/*
 %{_iconsdir}/hicolor/*
