@@ -138,9 +138,13 @@ rm -rf %{buildroot}
 %{clean_mime_database}
 %clean_icon_cache hicolor
 
+%if %mdkversion < 200900
 %post -n %{libname} -p /sbin/ldconfig
+%endif
 
+%if %mdkversion < 200900
 %postun -n %{libname} -p /sbin/ldconfig
+%endif
 
 %files -f %{oname}.lang
 %defattr(-,root,root)
