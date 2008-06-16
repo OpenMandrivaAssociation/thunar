@@ -21,6 +21,8 @@ Patch2:         %{oname}-0.9.0-use-eject-where-necessary.patch
 # (tpg) here's the never, and probably better version of the patch https://qa.mandriva.com/show_bug.cgi?id=40230
 Patch3:		%{oname}-0.9.0-icons-extension-strip2.patch
 Patch4:		%{oname}-0.9.0-dont-die-on-dbus-disconnect.patch
+# (Anssi 06/2008) fix underlinking:
+Patch5:		Thunar-0.9.0-fix-underlinking.patch
 BuildRequires:	libgdk_pixbuf2.0-devel
 BuildRequires:	exo-devel
 BuildRequires:	gamin-devel
@@ -92,8 +94,12 @@ Development files for the thunar filemanager.
 %patch2 -p1 -b .eject
 %patch3 -p1 -b .icon
 %patch4 -p1 -b .dbus
+%patch5 -p1
 
 %build
+# for patch5:
+NOCONFIGURE=1 xdt-autogen
+
 %configure2_5x \
 %if %mdkversion < 200900
     --sysconfdir=%{_sysconfdir}/X11 \
