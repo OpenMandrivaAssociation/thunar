@@ -173,8 +173,7 @@ rm -rf %{buildroot}
 %{_libdir}/ThunarHelp
 %{_libdir}/thunar-vfs-mime-cleaner-1
 %{_libdir}/ThunarBulkRename
-%{_libdir}/thunarx-1/thunar-apr.*
-%{_libdir}/thunarx-1/thunar-sbr.*
+%{_libdir}/thunarx-1
 %{_libdir}/thunar-sendto-email
 %{_libdir}/thunar-vfs-font-thumbnailer-1
 %{_libdir}/thunar-vfs-pixbuf-thumbnailer-1
