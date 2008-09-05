@@ -9,7 +9,7 @@
 Summary:	New modern file manager for the Xfce Desktop Environment
 Name:		thunar
 Version:	0.9.0
-Release:	%mkrel 11
+Release:	%mkrel 12
 License:	GPLv2+
 Group:		Graphical desktop/Xfce
 URL:		http://thunar.xfce.org
@@ -99,7 +99,7 @@ Development files for the thunar filemanager.
 %patch3 -p1 -b .icon
 %patch4 -p1 -b .dbus
 %patch5 -p1
-%patch6 -p1
+%patch6 -p1 -b .xdg
 
 %build
 # for patch5:
