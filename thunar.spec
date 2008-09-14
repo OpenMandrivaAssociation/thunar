@@ -9,7 +9,7 @@
 Summary:	New modern file manager for the Xfce Desktop Environment
 Name:		thunar
 Version:	0.9.0
-Release:	%mkrel 13
+Release:	%mkrel 14
 License:	GPLv2+
 Group:		Graphical desktop/Xfce
 URL:		http://thunar.xfce.org
@@ -44,6 +44,7 @@ BuildRequires:	intltool
 Requires:	shared-mime-info >= 0.15
 Requires:	exo
 Requires:	thunar-volman
+Requires:	%{libname} = %{version}-%{release}
 Requires(post):	desktop-file-utils >= 0.10
 Requires(postun): desktop-file-utils >= 0.10
 Obsoletes:	xffm
