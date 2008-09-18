@@ -9,7 +9,7 @@
 Summary:	New modern file manager for the Xfce Desktop Environment
 Name:		thunar
 Version:	0.9.0
-Release:	%mkrel 14
+Release:	%mkrel 15
 License:	GPLv2+
 Group:		Graphical desktop/Xfce
 URL:		http://thunar.xfce.org
@@ -103,7 +103,7 @@ Development files for the thunar filemanager.
 %patch6 -p1 -b .xdg
 
 %build
-# for patch5:
+# for patch 5 and 6:
 NOCONFIGURE=1 xdt-autogen
 
 %configure2_5x \
@@ -115,7 +115,8 @@ NOCONFIGURE=1 xdt-autogen
     --enable-gnome-thumbnailers \
     --enable-startup-notification \
     --enable-exif \
-    --enable-pcre
+    --enable-pcre \
+    --enable-xdg-user-dirs]
 
 %make
 
