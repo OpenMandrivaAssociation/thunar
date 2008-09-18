@@ -116,7 +116,7 @@ NOCONFIGURE=1 xdt-autogen
     --enable-startup-notification \
     --enable-exif \
     --enable-pcre \
-    --enable-xdg-user-dirs]
+    --enable-xdg-user-dirs
 
 %make
 
