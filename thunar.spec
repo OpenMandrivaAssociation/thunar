@@ -103,7 +103,7 @@ Development files for the thunar filemanager.
 %patch6 -p1 -b .xdg
 
 %build
-# for patch 5 and 6:
+# for patch 5:
 NOCONFIGURE=1 xdt-autogen
 
 %configure2_5x \
@@ -115,8 +115,7 @@ NOCONFIGURE=1 xdt-autogen
     --enable-gnome-thumbnailers \
     --enable-startup-notification \
     --enable-exif \
-    --enable-pcre \
-    --enable-xdg-user-dirs
+    --enable-pcre
 
 %make
 
