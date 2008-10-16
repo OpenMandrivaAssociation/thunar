@@ -8,15 +8,12 @@
 
 Summary:	New modern file manager for the Xfce Desktop Environment
 Name:		thunar
-Version:	0.9.0
-Release:	%mkrel 18
+Version:	0.9.91
+Release:	%mkrel 1
 License:	GPLv2+
 Group:		Graphical desktop/Xfce
 URL:		http://thunar.xfce.org
 Source0:	%{oname}-%{version}.tar.bz2
-Patch0:		%{oname}-0.9.0-zombies.patch
-Patch1:         %{oname}-0.9.0-missing-audio-cds-for-volman.patch
-Patch2:         %{oname}-0.9.0-use-eject-where-necessary.patch
 #(tpg) http://bugzilla.xfce.org/show_bug.cgi?id=3614
 # (tpg) here's the never, and probably better version of the patch https://qa.mandriva.com/show_bug.cgi?id=40230
 Patch3:		%{oname}-0.9.0-icons-extension-strip2.patch
@@ -94,9 +91,6 @@ Development files for the thunar filemanager.
 
 %prep
 %setup -qn %{oname}-%{version}
-%patch0 -p1
-%patch1 -p0
-%patch2 -p1 -b .eject
 %patch3 -p1 -b .icon
 %patch4 -p1 -b .dbus
 %patch5 -p1
