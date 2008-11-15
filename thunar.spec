@@ -8,7 +8,7 @@
 
 Summary:	New modern file manager for the Xfce Desktop Environment
 Name:		thunar
-Version:	0.9.91
+Version:	0.9.92
 Release:	%mkrel 2
 License:	GPLv2+
 Group:		Graphical desktop/Xfce
@@ -29,7 +29,7 @@ BuildRequires:	hal-devel
 BuildRequires:	perl(XML::Parser)
 BuildRequires:	dbus-glib-devel
 BuildRequires:	desktop-file-utils
-BuildRequires:	xfce4-panel-devel
+BuildRequires:	xfce4-panel-devel >= 4.5.92
 BuildRequires:	libpng-devel
 BuildRequires:	libjpeg-devel
 BuildRequires:	libpcre-devel
@@ -109,7 +109,12 @@ NOCONFIGURE=1 xdt-autogen
     --enable-gnome-thumbnailers \
     --enable-startup-notification \
     --enable-exif \
-    --enable-pcre
+    --enable-pcre \
+    --enable-gtk-doc \
+    --enable-apr-plugin \
+    --enable-tpa-plugin \
+    --enable-uca-plugin \
+    --enable-wallpaper-plugin
 
 %make
 
