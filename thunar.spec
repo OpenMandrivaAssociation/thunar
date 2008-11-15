@@ -13,7 +13,7 @@ Release:	%mkrel 2
 License:	GPLv2+
 Group:		Graphical desktop/Xfce
 URL:		http://thunar.xfce.org
-Source0:	%{oname}-%{version}.tar.bz2
+Source0:	http://www.xfce.org/archive/xfce-%{version}/src/%{oname}-%{version}.tar.bz2
 #(tpg) http://bugzilla.xfce.org/show_bug.cgi?id=3614
 # (tpg) here's the never, and probably better version of the patch https://qa.mandriva.com/show_bug.cgi?id=40230
 Patch3:		%{oname}-0.9.0-icons-extension-strip2.patch
