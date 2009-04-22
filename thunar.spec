@@ -8,8 +8,8 @@
 
 Summary:	New modern file manager for the Xfce Desktop Environment
 Name:		thunar
-Version:	1.0.0
-Release:	%mkrel 3
+Version:	1.0.1
+Release:	%mkrel 1
 License:	GPLv2+
 Group:		Graphical desktop/Xfce
 URL:		http://thunar.xfce.org
@@ -20,7 +20,6 @@ Patch3:		%{oname}-0.9.0-icons-extension-strip2.patch
 Patch4:		%{oname}-0.9.0-dont-die-on-dbus-disconnect.patch
 # (Anssi 06/2008) fix underlinking:
 Patch5:		%{oname}-0.9.0-fix-underlinking.patch
-Patch6:		%{oname}-1.0.0-properly-apply-umask-for-new-files-and-directories.patch
 BuildRequires:	libgdk_pixbuf2.0-devel
 BuildRequires:	exo-devel
 BuildRequires:	gamin-devel
@@ -28,7 +27,7 @@ BuildRequires:	hal-devel
 BuildRequires:	perl(XML::Parser)
 BuildRequires:	dbus-glib-devel
 BuildRequires:	desktop-file-utils
-BuildRequires:	xfce4-panel-devel >= 4.5.92
+BuildRequires:	xfce4-panel-devel >= 4.6.0
 BuildRequires:	libpng-devel
 BuildRequires:	libjpeg-devel
 BuildRequires:	libpcre-devel
@@ -93,7 +92,6 @@ Development files for the thunar filemanager.
 %patch3 -p1 -b .icon
 %patch4 -p1 -b .dbus
 %patch5 -p1
-%patch6 -p1
 
 %build
 # for patch 5:
