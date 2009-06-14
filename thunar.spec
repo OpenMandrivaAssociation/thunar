@@ -9,14 +9,14 @@
 Summary:	New modern file manager for the Xfce Desktop Environment
 Name:		thunar
 Version:	1.0.1
-Release:	%mkrel 1
+Release:	%mkrel 2
 License:	GPLv2+
 Group:		Graphical desktop/Xfce
 URL:		http://thunar.xfce.org
 Source0:	http://www.xfce.org/archive/xfce-%{version}/src/%{oname}-%{version}.tar.bz2
 #(tpg) http://bugzilla.xfce.org/show_bug.cgi?id=3614
 # (tpg) here's the never, and probably better version of the patch https://qa.mandriva.com/show_bug.cgi?id=40230
-Patch3:		%{oname}-0.9.0-icons-extension-strip2.patch
+Patch3:		%{oname}-1.0.1-icons-extension-strip.patch
 Patch4:		%{oname}-0.9.0-dont-die-on-dbus-disconnect.patch
 # (Anssi 06/2008) fix underlinking:
 Patch5:		%{oname}-0.9.0-fix-underlinking.patch
@@ -94,6 +94,12 @@ Development files for the thunar filemanager.
 %patch5 -p1
 
 %build
+
+# re-generate it
+pushd thunar
+exo-csource --name=thunar_window_ui thunar-window-ui.xml > thunar-window-ui.h
+popd
+
 # for patch 5:
 NOCONFIGURE=1 xdt-autogen
 
