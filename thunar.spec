@@ -36,6 +36,7 @@ BuildRequires:	libpcre-devel
 BuildRequires:	libexif-devel
 BuildRequires:	libGConf2-devel
 BuildRequires:	libusb-devel
+BuildRequires:	xfconf-devel
 # for patch 5
 BuildRequires:	intltool
 Requires:	shared-mime-info >= 0.15
