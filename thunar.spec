@@ -9,7 +9,7 @@
 Summary:	New modern file manager for the Xfce Desktop Environment
 Name:		thunar
 Version:	1.0.1
-Release:	%mkrel 5
+Release:	%mkrel 6
 License:	GPLv2+
 Group:		Graphical desktop/Xfce
 URL:		http://thunar.xfce.org
@@ -39,6 +39,7 @@ BuildRequires:	libusb-devel
 BuildRequires:	xfconf-devel
 # for patch 5
 BuildRequires:	intltool
+BuildRequires:	desktop-file-utils
 Requires:	shared-mime-info >= 0.15
 Requires:	exo
 Requires:	thunar-volman
@@ -130,9 +131,17 @@ rm -rf %{buildroot}
 %makeinstall_std
 
 desktop-file-install \
+    --remove-key="Encoding" \
+    --add-category="FileManager;FileTools" \
+    --remove-category="Application" \
+    --add-only-show-in="XFCE" \
+    --remove-mime-type="x-directory/normal;x-directory/gnome-default-handler" \
+    --dir %{buildroot}%{_datadir}/applications %{buildroot}%{_datadir}/applications/Thunar*
+
+desktop-file-install \
     --add-category="FileManager" \
     --add-only-show-in="XFCE" \
-    --dir %{buildroot}%{_datadir}/applications %{buildroot}%{_datadir}/applications/*
+    --dir %{buildroot}%{_datadir}/applications %{buildroot}%{_datadir}/applications/thunar-settings.desktop
 
 # Remove unneeded files
 rm -f %{buildroot}%{_libdir}/thunarx-1/thunar-uca.la
