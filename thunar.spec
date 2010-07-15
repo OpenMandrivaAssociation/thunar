@@ -8,12 +8,12 @@
 
 Summary:	New modern file manager for the Xfce Desktop Environment
 Name:		thunar
-Version:	1.0.1
-Release:	%mkrel 7
+Version:	1.0.2
+Release:	%mkrel 1
 License:	GPLv2+
 Group:		Graphical desktop/Xfce
 URL:		http://thunar.xfce.org
-Source0:	http://www.xfce.org/archive/xfce-%{version}/src/%{oname}-%{version}.tar.bz2
+Source0:	http://archive.xfce.org/src/xfce/%{name}/1.0/%{oname}-%{version}.tar.bz2
 #(tpg) http://bugzilla.xfce.org/show_bug.cgi?id=3614
 # (tpg) here's the never, and probably better version of the patch https://qa.mandriva.com/show_bug.cgi?id=40230
 Patch3:		%{oname}-1.0.1-icons-extension-strip.patch
@@ -29,7 +29,7 @@ BuildRequires:	hal-devel
 BuildRequires:	perl(XML::Parser)
 BuildRequires:	dbus-glib-devel
 BuildRequires:	desktop-file-utils
-BuildRequires:	xfce4-panel-devel >= 4.6.0
+BuildRequires:	xfce4-panel-devel >= 4.6.4
 BuildRequires:	libpng-devel
 BuildRequires:	libjpeg-devel
 BuildRequires:	libpcre-devel
@@ -196,7 +196,6 @@ rm -rf %{buildroot}
 %{_datadir}/dbus-1/services/*
 %{_datadir}/doc/Thunar
 %{_datadir}/Thunar/sendto/thunar-sendto-email.desktop
-%{_libdir}/thunarx-1/thunar-uca.so
 %{_libdir}/ThunarHelp
 %{_libdir}/thunar-vfs-mime-cleaner-1
 %{_libdir}/ThunarBulkRename
