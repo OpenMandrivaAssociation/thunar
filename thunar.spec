@@ -1,19 +1,20 @@
 %define oname Thunar
 %define iconname thunar.png
+%define url_ver %(echo %{version} | cut -c 1-3)
 
-%define major 2
-%define apiversion 1
+%define major 0
+%define apiversion 2
 %define libname %mklibname %{name} %{apiversion} %{major}
 %define develname %mklibname %{name} -d
 
 Summary:	New modern file manager for the Xfce Desktop Environment
 Name:		thunar
-Version:	1.0.2
-Release:	%mkrel 2
+Version:	1.1.2
+Release:	%mkrel 1
 License:	GPLv2+
 Group:		Graphical desktop/Xfce
 URL:		http://thunar.xfce.org
-Source0:	http://archive.xfce.org/src/xfce/%{name}/1.0/%{oname}-%{version}.tar.bz2
+Source0:	http://archive.xfce.org/src/xfce/%{name}/%{url_ver}/%{oname}-%{version}.tar.bz2
 #(tpg) http://bugzilla.xfce.org/show_bug.cgi?id=3614
 # (tpg) here's the never, and probably better version of the patch https://qa.mandriva.com/show_bug.cgi?id=40230
 Patch3:		%{oname}-1.0.1-icons-extension-strip.patch
@@ -28,20 +29,22 @@ Patch9:		Thunar-1.0.2-fix-sidepanel-width.patch
 Patch10:	Thunar-1.0.2-update-cursor-on-delete.patch
 Patch11:	Thunar-1.0.2-refilter-tree-hidden-dir.patch
 BuildRequires:	libgdk_pixbuf2.0-devel
-BuildRequires:	exo-devel
+BuildRequires:	exo-devel >= 0.5.4
 BuildRequires:	gamin-devel
-BuildRequires:	hal-devel
 BuildRequires:	perl(XML::Parser)
 BuildRequires:	dbus-glib-devel
 BuildRequires:	desktop-file-utils
-BuildRequires:	xfce4-panel-devel >= 4.6.4
+BuildRequires:	xfce4-panel-devel >= 4.7.0
+BuildRequires:	libxfce4util-devel >= 4.7.1
+BuildRequires:	libxfce4ui-devel >= 4.7.1
 BuildRequires:	libpng-devel
 BuildRequires:	libjpeg-devel
 BuildRequires:	libpcre-devel
 BuildRequires:	libexif-devel
 BuildRequires:	libGConf2-devel
 BuildRequires:	libusb-devel
-BuildRequires:	xfconf-devel
+BuildRequires:	xfconf-devel >= 4.7.1
+BuildRequires:	udev-devel
 # for patch 5
 BuildRequires:	intltool
 BuildRequires:	desktop-file-utils
@@ -98,15 +101,15 @@ Development files for the thunar filemanager.
 
 %prep
 %setup -qn %{oname}-%{version}
-%patch3 -p1 -b .icon
+#%patch3 -p1 -b .icon
 %patch4 -p1 -b .dbus
-%patch5 -p1
-%patch6 -p1
-%patch7 -p1
-%patch8 -p1
-%patch9 -p1
-%patch10 -p1
-%patch11 -p1
+#%patch5 -p1
+#%patch6 -p1
+#%patch7 -p1
+#%patch8 -p1 fix
+#%patch9 -p1 fix
+#%patch10 -p1 fix
+#%patch11 -p1 fix
 
 %build
 
@@ -116,23 +119,23 @@ exo-csource --name=thunar_window_ui thunar-window-ui.xml > thunar-window-ui.h
 popd
 
 # for patch 5:
-NOCONFIGURE=1 xdt-autogen
+#NOCONFIGURE=1 xdt-autogen
 
 %configure2_5x \
 %if %mdkversion < 200900
     --sysconfdir=%{_sysconfdir}/X11 \
 %endif
-    --with-volume-manager=hal \
     --enable-dbus \
-    --enable-gnome-thumbnailers \
-    --enable-startup-notification \
+    --enable-notifications \
     --enable-exif \
     --enable-pcre \
     --enable-gtk-doc \
     --enable-apr-plugin \
     --enable-tpa-plugin \
     --enable-uca-plugin \
-    --enable-wallpaper-plugin
+    --enable-wallpaper-plugin \
+    --enable-gio-unix \
+    --enable-gudev
 
 %make
 
@@ -206,19 +209,19 @@ rm -rf %{buildroot}
 %{_datadir}/dbus-1/services/*
 %{_datadir}/doc/Thunar
 %{_datadir}/Thunar/sendto/thunar-sendto-email.desktop
-%{_libdir}/ThunarHelp
-%{_libdir}/thunar-vfs-mime-cleaner-1
-%{_libdir}/ThunarBulkRename
-%{_libdir}/thunarx-1
-%{_libdir}/thunar-sendto-email
-%{_libdir}/thunar-vfs-font-thumbnailer-1
-%{_libdir}/thunar-vfs-pixbuf-thumbnailer-1
-%{_libdir}/thunar-vfs-update-thumbnailers-cache-1
+%{_libdir}/%{oname}/ThunarHelp
+#%{_libdir}/thunar-vfs-mime-cleaner-1
+%{_libdir}/%{oname}/ThunarBulkRename
+%{_libdir}/thunarx-%{apiversion}
+%{_libdir}/%{oname}/thunar-sendto-email
+#%{_libdir}/thunar-vfs-font-thumbnailer-1
+#%{_libdir}/thunar-vfs-pixbuf-thumbnailer-1
+#%{_libdir}/thunar-vfs-update-thumbnailers-cache-1
 %{_mandir}/man1/*
-%{_datadir}/thumbnailers/thunar-vfs-font-thumbnailer-1.desktop
-%{_libdir}/xfce4/panel-plugins/thunar-tpa
+#%{_datadir}/thumbnailers/thunar-vfs-font-thumbnailer-1.desktop
+%{_libdir}/xfce4/panel/plugins/*%{name}-*
 %{_datadir}/xfce4/panel-plugins/thunar-tpa.desktop
-%{_datadir}/gtk-doc/html/thunar-vfs/*
+#%{_datadir}/gtk-doc/html/thunar-vfs/*
 %{_datadir}/gtk-doc/html/thunarx/*
 
 %files -n %{libname}
@@ -227,10 +230,10 @@ rm -rf %{buildroot}
 
 %files -n %{develname}
 %defattr(-,root,root)
-%dir %{_includedir}/thunar-vfs-1
-%{_includedir}/thunar-vfs-1/*
-%dir %{_includedir}/thunarx-1
-%{_includedir}/thunarx-1/*
+#%dir %{_includedir}/thunar-vfs-1
+#%{_includedir}/thunar-vfs-1/*
+%dir %{_includedir}/thunarx-%{apiversion}
+%{_includedir}/thunarx-%{apiversion}/*
 %{_libdir}/lib*.so
 %{_libdir}/lib*.*a
 %{_libdir}/pkgconfig/*.pc
