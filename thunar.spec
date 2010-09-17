@@ -44,7 +44,8 @@ BuildRequires:	libexif-devel
 BuildRequires:	libGConf2-devel
 BuildRequires:	libusb-devel
 BuildRequires:	xfconf-devel >= 4.7.1
-BuildRequires:	udev-devel
+BuildRequires:	libgudev-devel
+BuildRequires:	libnotify-devel
 # for patch 5
 BuildRequires:	intltool
 BuildRequires:	desktop-file-utils
@@ -117,9 +118,6 @@ Development files for the thunar filemanager.
 pushd thunar
 exo-csource --name=thunar_window_ui thunar-window-ui.xml > thunar-window-ui.h
 popd
-
-# for patch 5:
-#NOCONFIGURE=1 xdt-autogen
 
 %configure2_5x \
 %if %mdkversion < 200900
@@ -210,18 +208,12 @@ rm -rf %{buildroot}
 %{_datadir}/doc/Thunar
 %{_datadir}/Thunar/sendto/thunar-sendto-email.desktop
 %{_libdir}/%{oname}/ThunarHelp
-#%{_libdir}/thunar-vfs-mime-cleaner-1
 %{_libdir}/%{oname}/ThunarBulkRename
 %{_libdir}/thunarx-%{apiversion}
 %{_libdir}/%{oname}/thunar-sendto-email
-#%{_libdir}/thunar-vfs-font-thumbnailer-1
-#%{_libdir}/thunar-vfs-pixbuf-thumbnailer-1
-#%{_libdir}/thunar-vfs-update-thumbnailers-cache-1
 %{_mandir}/man1/*
-#%{_datadir}/thumbnailers/thunar-vfs-font-thumbnailer-1.desktop
 %{_libdir}/xfce4/panel/plugins/*%{name}-*
 %{_datadir}/xfce4/panel-plugins/thunar-tpa.desktop
-#%{_datadir}/gtk-doc/html/thunar-vfs/*
 %{_datadir}/gtk-doc/html/thunarx/*
 
 %files -n %{libname}
@@ -230,8 +222,6 @@ rm -rf %{buildroot}
 
 %files -n %{develname}
 %defattr(-,root,root)
-#%dir %{_includedir}/thunar-vfs-1
-#%{_includedir}/thunar-vfs-1/*
 %dir %{_includedir}/thunarx-%{apiversion}
 %{_includedir}/thunarx-%{apiversion}/*
 %{_libdir}/lib*.so
