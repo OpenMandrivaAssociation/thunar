@@ -10,7 +10,7 @@
 Summary:	New modern file manager for the Xfce Desktop Environment
 Name:		thunar
 Version:	1.1.2
-Release:	%mkrel 1
+Release:	%mkrel 2
 License:	GPLv2+
 Group:		Graphical desktop/Xfce
 URL:		http://thunar.xfce.org
@@ -163,6 +163,10 @@ rm -f %{buildroot}%{_datadir}/doc/Thunar/README.volumes
 
 %clean
 rm -rf %{buildroot}
+
+#gw https://qa.mandriva.com/show_bug.cgi?id=61131
+%pre
+rm -rf %_datadir/doc/Thunar/html/*/images
 
 %if %mdkversion < 200900
 %post
