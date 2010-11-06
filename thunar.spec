@@ -9,8 +9,8 @@
 
 Summary:	New modern file manager for the Xfce Desktop Environment
 Name:		thunar
-Version:	1.1.2
-Release:	%mkrel 2
+Version:	1.1.4
+Release:	%mkrel 1
 License:	GPLv2+
 Group:		Graphical desktop/Xfce
 URL:		http://thunar.xfce.org
@@ -120,9 +120,6 @@ exo-csource --name=thunar_window_ui thunar-window-ui.xml > thunar-window-ui.h
 popd
 
 %configure2_5x \
-%if %mdkversion < 200900
-    --sysconfdir=%{_sysconfdir}/X11 \
-%endif
     --enable-dbus \
     --enable-notifications \
     --enable-exif \
@@ -159,6 +156,9 @@ rm -f %{buildroot}%{_libdir}/thunarx-1/thunar-uca.la
 rm -f %{buildroot}%{_datadir}/doc/Thunar/README.thunarrc
 rm -f %{buildroot}%{_datadir}/doc/Thunar/README.volumes
 
+# (tpg) this file is in mandriva-xfce-config package
+rm -rf %{buildroot}%{_sysconfdir}/xdg/Thunar/uca.xml
+
 %find_lang %{oname}
 
 %clean
@@ -168,41 +168,11 @@ rm -rf %{buildroot}
 %pre
 rm -rf %_datadir/doc/Thunar/html/*/images
 
-%if %mdkversion < 200900
-%post
-%{update_menus}
-%{update_desktop_database}
-%{update_mime_database}
-%update_icon_cache hicolor
-%endif
-
-%if %mdkversion < 200900
-%postun
-%{clean_menus}
-%{clean_desktop_database}
-%{clean_mime_database}
-%clean_icon_cache hicolor
-%endif
-
-%if %mdkversion < 200900
-%post -n %{libname} -p /sbin/ldconfig
-%endif
-
-%if %mdkversion < 200900
-%postun -n %{libname} -p /sbin/ldconfig
-%endif
-
 %files -f %{oname}.lang
 %defattr(-,root,root)
 %doc AUTHORS FAQ HACKING README THANKS TODO
 %doc docs/README.*
-%if %mdkversion < 200900
-%dir %{_sysconfdir}/X11/xdg/Thunar
-%exclude %{_sysconfdir}/X11/xdg/Thunar/uca.xml
-%else
 %dir %{_sysconfdir}/xdg/Thunar
-%exclude %{_sysconfdir}/xdg/Thunar/uca.xml
-%endif
 %dir %{_datadir}/Thunar
 %{_bindir}/*
 %{_datadir}/applications/*
