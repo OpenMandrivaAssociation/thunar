@@ -28,6 +28,7 @@ Patch8:		Thunar-1.0.2-window-maximize.patch
 Patch9:		Thunar-1.0.2-fix-sidepanel-width.patch
 Patch10:	Thunar-1.0.2-update-cursor-on-delete.patch
 Patch11:	Thunar-1.0.2-refilter-tree-hidden-dir.patch
+Patch12:	Thunar-1.3.0-add-gmodule-link.patch
 BuildRequires:	libgdk_pixbuf2.0-devel
 BuildRequires:	exo-devel >= 0.5.4
 BuildRequires:	gamin-devel
@@ -111,8 +112,11 @@ Development files for the thunar filemanager.
 #%patch9 -p1 fix
 #%patch10 -p1 fix
 #%patch11 -p1 fix
+%patch12 -p1
 
 %build
+# (tpg) needed for patch 12
+xdt-autogen
 
 # re-generate it
 pushd thunar
@@ -159,7 +163,7 @@ rm -f %{buildroot}%{_datadir}/doc/Thunar/README.volumes
 # (tpg) this file is in mandriva-xfce-config package
 rm -rf %{buildroot}%{_sysconfdir}/xdg/Thunar/uca.xml
 
-%find_lang %{oname}
+%find_lang %{oname} %{oname}.lang
 
 %clean
 rm -rf %{buildroot}
@@ -199,5 +203,4 @@ rm -rf %_datadir/doc/Thunar/html/*/images
 %dir %{_includedir}/thunarx-%{apiversion}
 %{_includedir}/thunarx-%{apiversion}/*
 %{_libdir}/lib*.so
-%{_libdir}/lib*.*a
 %{_libdir}/pkgconfig/*.pc
