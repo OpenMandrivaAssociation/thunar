@@ -9,8 +9,8 @@
 
 Summary:	New modern file manager for the Xfce Desktop Environment
 Name:		thunar
-Version:	1.3.0
-Release:	%mkrel 5
+Version:	1.3.1
+Release:	1
 License:	GPLv2+
 Group:		Graphical desktop/Xfce
 URL:		http://thunar.xfce.org
@@ -30,21 +30,21 @@ Patch10:	Thunar-1.0.2-update-cursor-on-delete.patch
 Patch11:	Thunar-1.0.2-refilter-tree-hidden-dir.patch
 Patch12:	Thunar-1.3.0-add-gmodule-link.patch
 BuildRequires:	libgdk_pixbuf2.0-devel
-BuildRequires:	exo-devel >= 0.5.4
+BuildRequires:	exo-devel >= 0.7.2
 BuildRequires:	gamin-devel
 BuildRequires:	perl(XML::Parser)
 BuildRequires:	dbus-glib-devel
 BuildRequires:	desktop-file-utils
-BuildRequires:	xfce4-panel-devel >= 4.7.0
-BuildRequires:	libxfce4util-devel >= 4.7.1
-BuildRequires:	libxfce4ui-devel >= 4.7.1
+BuildRequires:	xfce4-panel-devel >= 4.9.1
+BuildRequires:	libxfce4util-devel >= 4.9.0
+BuildRequires:	libxfce4ui-devel >= 4.9.1
 BuildRequires:	libpng-devel
 BuildRequires:	libjpeg-devel
 BuildRequires:	libpcre-devel
 BuildRequires:	libexif-devel
 BuildRequires:	libGConf2-devel
 BuildRequires:	libusb-devel
-BuildRequires:	xfconf-devel >= 4.7.1
+BuildRequires:	xfconf-devel >= 4.9.0
 BuildRequires:	libgudev-devel
 BuildRequires:	libnotify-devel
 # for patch 5
@@ -139,7 +139,6 @@ popd
 %make
 
 %install
-rm -rf %{buildroot}
 %makeinstall_std
 
 desktop-file-install \
@@ -165,15 +164,11 @@ rm -rf %{buildroot}%{_sysconfdir}/xdg/Thunar/uca.xml
 
 %find_lang %{oname} %{oname}.lang
 
-%clean
-rm -rf %{buildroot}
-
 #gw https://qa.mandriva.com/show_bug.cgi?id=61131
 %pre
-rm -rf %_datadir/doc/Thunar/html/*/images
+rm -rf %{_datadir}/doc/Thunar/html/*/images
 
 %files -f %{oname}.lang
-%defattr(-,root,root)
 %doc AUTHORS FAQ HACKING README THANKS TODO
 %doc docs/README.*
 %dir %{_sysconfdir}/xdg/Thunar
@@ -195,11 +190,9 @@ rm -rf %_datadir/doc/Thunar/html/*/images
 %{_datadir}/gtk-doc/html/thunarx/*
 
 %files -n %{libname}
-%defattr(-,root,root)
 %{_libdir}/*%{apiversion}.so.%{major}*
 
 %files -n %{develname}
-%defattr(-,root,root)
 %dir %{_includedir}/thunarx-%{apiversion}
 %{_includedir}/thunarx-%{apiversion}/*
 %{_libdir}/lib*.so
