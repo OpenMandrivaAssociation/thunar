@@ -15,20 +15,8 @@ License:	GPLv2+
 Group:		Graphical desktop/Xfce
 URL:		http://thunar.xfce.org
 Source0:	http://archive.xfce.org/src/xfce/%{name}/%{url_ver}/%{oname}-%{version}.tar.bz2
-#(tpg) http://bugzilla.xfce.org/show_bug.cgi?id=3614
-# (tpg) here's the never, and probably better version of the patch https://qa.mandriva.com/show_bug.cgi?id=40230
-Patch3:		%{oname}-1.0.1-icons-extension-strip.patch
-Patch4:		%{oname}-0.9.0-dont-die-on-dbus-disconnect.patch
-# (Anssi 06/2008) fix underlinking:
-Patch5:		%{oname}-0.9.0-fix-underlinking.patch
-# (tpg) prevent crashing of Thunar when you are drag'n'drop some unhandled formats e.g text
-Patch6:		Thunar-1.0.1-dont-crash-on-dnd-unhandled-formats.patch
-Patch7:		Thunar-1.0.2-icon-naming-spec-compliance.patch
-Patch8:		Thunar-1.0.2-window-maximize.patch
-Patch9:		Thunar-1.0.2-fix-sidepanel-width.patch
-Patch10:	Thunar-1.0.2-update-cursor-on-delete.patch
-Patch11:	Thunar-1.0.2-refilter-tree-hidden-dir.patch
-Patch12:	Thunar-1.3.0-add-gmodule-link.patch
+Patch12:	Thunar-1.3.1-add-gmodule-link.patch
+BuildRequires:	gtk-doc
 BuildRequires:	libgdk_pixbuf2.0-devel
 BuildRequires:	exo-devel >= 0.7.2
 BuildRequires:	gamin-devel
@@ -45,9 +33,8 @@ BuildRequires:	libexif-devel
 BuildRequires:	libGConf2-devel
 BuildRequires:	libusb-devel
 BuildRequires:	xfconf-devel >= 4.9.0
-BuildRequires:	libgudev-devel
+BuildRequires:	pkgconfig(gudev-1.0)
 BuildRequires:	libnotify-devel
-# for patch 5
 BuildRequires:	intltool
 BuildRequires:	desktop-file-utils
 Requires:	shared-mime-info >= 0.15
@@ -57,7 +44,6 @@ Requires:	%{libname} = %{version}-%{release}
 Requires(post):	desktop-file-utils >= 0.10
 Requires(postun): desktop-file-utils >= 0.10
 Obsoletes:	xffm
-BuildRoot:	%{_tmppath}/%{name}-%{version}-buildroot
 
 %description
 Thunar has been designed from the ground up to be fast and easy-to-use.
@@ -103,15 +89,6 @@ Development files for the thunar filemanager.
 
 %prep
 %setup -qn %{oname}-%{version}
-#%patch3 -p1 -b .icon
-%patch4 -p1 -b .dbus
-#%patch5 -p1
-#%patch6 -p1
-#%patch7 -p1
-#%patch8 -p1 fix
-#%patch9 -p1 fix
-#%patch10 -p1 fix
-#%patch11 -p1 fix
 %patch12 -p1
 
 %build
@@ -149,11 +126,6 @@ desktop-file-install \
     --remove-mime-type="x-directory/normal;x-directory/gnome-default-handler" \
     --dir %{buildroot}%{_datadir}/applications %{buildroot}%{_datadir}/applications/Thunar*
 
-desktop-file-install \
-    --add-category="FileManager" \
-    --add-only-show-in="XFCE" \
-    --dir %{buildroot}%{_datadir}/applications %{buildroot}%{_datadir}/applications/thunar-settings.desktop
-
 # Remove unneeded files
 rm -f %{buildroot}%{_libdir}/thunarx-1/thunar-uca.la
 rm -f %{buildroot}%{_datadir}/doc/Thunar/README.thunarrc
@@ -180,7 +152,6 @@ rm -rf %{_datadir}/doc/Thunar/html/*/images
 %{_datadir}/dbus-1/services/*
 %{_datadir}/doc/Thunar
 %{_datadir}/Thunar/sendto/thunar-sendto-email.desktop
-%{_libdir}/%{oname}/ThunarHelp
 %{_libdir}/%{oname}/ThunarBulkRename
 %{_libdir}/thunarx-%{apiversion}
 %{_libdir}/%{oname}/thunar-sendto-email
