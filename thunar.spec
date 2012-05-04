@@ -18,21 +18,21 @@ Source0:	http://archive.xfce.org/src/xfce/%{name}/%{url_ver}/%{oname}-%{version}
 Patch12:	Thunar-1.3.1-add-gmodule-link.patch
 BuildRequires:	gtk-doc
 BuildRequires:	libgdk_pixbuf2.0-devel
-BuildRequires:	exo-devel >= 0.7.2
+BuildRequires:	exo-devel >= 0.8.0
 BuildRequires:	gamin-devel
 BuildRequires:	perl(XML::Parser)
 BuildRequires:	dbus-glib-devel
 BuildRequires:	desktop-file-utils
-BuildRequires:	xfce4-panel-devel >= 4.9.1
-BuildRequires:	libxfce4util-devel >= 4.9.0
-BuildRequires:	libxfce4ui-devel >= 4.9.1
+BuildRequires:	xfce4-panel-devel >= 4.10.0
+BuildRequires:	libxfce4util-devel >= 4.10.0
+BuildRequires:	libxfce4ui-devel >= 4.10.0
 BuildRequires:	libpng-devel
 BuildRequires:	libjpeg-devel
 BuildRequires:	libpcre-devel
 BuildRequires:	libexif-devel
 BuildRequires:	libGConf2-devel
 BuildRequires:	libusb-devel
-BuildRequires:	xfconf-devel >= 4.9.0
+BuildRequires:	xfconf-devel >= 4.10.0
 BuildRequires:	pkgconfig(gudev-1.0)
 BuildRequires:	libnotify-devel
 BuildRequires:	intltool
