@@ -15,7 +15,6 @@ License:	GPLv2+
 Group:		Graphical desktop/Xfce
 URL:		http://thunar.xfce.org
 Source0:	http://archive.xfce.org/src/xfce/%{name}/%{url_ver}/%{oname}-%{version}.tar.bz2
-Patch12:	Thunar-1.3.1-add-gmodule-link.patch
 BuildRequires:	gtk-doc
 BuildRequires:	libgdk_pixbuf2.0-devel
 BuildRequires:	exo-devel >= 0.8.0
@@ -89,12 +88,8 @@ Development files for the thunar filemanager.
 
 %prep
 %setup -qn %{oname}-%{version}
-%patch12 -p1
 
 %build
-# (tpg) needed for patch 12
-xdt-autogen
-
 # re-generate it
 pushd thunar
 exo-csource --name=thunar_window_ui thunar-window-ui.xml > thunar-window-ui.h
