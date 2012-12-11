@@ -9,7 +9,7 @@
 
 Summary:	New modern file manager for the Xfce Desktop Environment
 Name:		thunar
-Version:	1.4.0
+Version:	1.6.1
 Release:	1
 License:	GPLv2+
 Group:		Graphical desktop/Xfce
@@ -17,29 +17,29 @@ URL:		http://thunar.xfce.org
 Source0:	http://archive.xfce.org/src/xfce/%{name}/%{url_ver}/%{oname}-%{version}.tar.bz2
 BuildRequires:	gtk-doc
 BuildRequires:	libgdk_pixbuf2.0-devel
-BuildRequires:	exo-devel >= 0.8.0
-BuildRequires:	gamin-devel
+BuildRequires:	exo-devel >= 0.10.0
+BuildRequires:	pkgconfig(gamin)
 BuildRequires:	perl(XML::Parser)
-BuildRequires:	dbus-glib-devel
+BuildRequires:	pkgconfig(dbus-glib-1)
 BuildRequires:	desktop-file-utils
 BuildRequires:	xfce4-panel-devel >= 4.10.0
 BuildRequires:	libxfce4util-devel >= 4.10.0
 BuildRequires:	libxfce4ui-devel >= 4.10.0
-BuildRequires:	libpng-devel
+BuildRequires:	pkgconfig(libpng)
 BuildRequires:	libjpeg-devel
-BuildRequires:	libpcre-devel
+BuildRequires:	pkgconfig(libpcre)
 BuildRequires:	libexif-devel
-BuildRequires:	libGConf2-devel
-BuildRequires:	libusb-devel
+BuildRequires:	pkgconfig(gconf-2.0)
+BuildRequires:	pkgconfig(libusb)
 BuildRequires:	xfconf-devel >= 4.10.0
 BuildRequires:	pkgconfig(gudev-1.0)
-BuildRequires:	libnotify-devel
+BuildRequires:	pkgconfig(libnotify)
 BuildRequires:	intltool
 BuildRequires:	desktop-file-utils
 Requires:	shared-mime-info >= 0.15
 Requires:	exo
 Requires:	thunar-volman
-Requires:	%{libname} = %{version}-%{release}
+Requires:	%{libname} = %{version}
 Requires(post):	desktop-file-utils >= 0.10
 Requires(postun): desktop-file-utils >= 0.10
 Obsoletes:	xffm
@@ -78,9 +78,8 @@ Libraries for the thunar filemanager.
 %package -n %{develname}
 Summary:	Development files for the thunar filemanager
 Group:		Development/Other
-Provides:	%{name}-devel = %{version}-%{release}
-Provides:	lib%{name}-devel = %{version}-%{release}
-Requires:	%{libname} = %{version}-%{release}
+Provides:	%{name}-devel = %{EVRD}
+Requires:	%{libname} = %{version}
 Obsoletes:	%mklibname %{name} 1 2 -d
 
 %description -n %{develname}
@@ -127,7 +126,7 @@ rm -f %{buildroot}%{_datadir}/doc/Thunar/README.thunarrc
 rm -f %{buildroot}%{_datadir}/doc/Thunar/README.volumes
 
 # (tpg) this file is in mandriva-xfce-config package
-rm -rf %{buildroot}%{_sysconfdir}/xdg/Thunar/uca.xml
+#rm -rf %{buildroot}%{_sysconfdir}/xdg/Thunar/uca.xml
 
 %find_lang %{oname} %{oname}.lang
 
@@ -154,6 +153,7 @@ rm -rf %{_datadir}/doc/Thunar/html/*/images
 %{_libdir}/xfce4/panel/plugins/*%{name}-*
 %{_datadir}/xfce4/panel-plugins/thunar-tpa.desktop
 %{_datadir}/gtk-doc/html/thunarx/*
+%{_sysconfdir}/xdg/Thunar/*.xml
 
 %files -n %{libname}
 %{_libdir}/*%{apiversion}.so.%{major}*
