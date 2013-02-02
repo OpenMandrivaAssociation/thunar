@@ -16,7 +16,7 @@ Group:		Graphical desktop/Xfce
 URL:		http://thunar.xfce.org
 Source0:	http://archive.xfce.org/src/xfce/%{name}/%{url_ver}/%{oname}-%{version}.tar.bz2
 BuildRequires:	gtk-doc
-BuildRequires:	libgdk_pixbuf2.0-devel
+BuildRequires:	pkgconfig(gdk-pixbuf-2.0)
 BuildRequires:	exo-devel >= 0.10.0
 BuildRequires:	pkgconfig(gamin)
 BuildRequires:	perl(XML::Parser)
