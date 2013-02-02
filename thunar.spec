@@ -26,7 +26,7 @@ BuildRequires:	xfce4-panel-devel >= 4.10.0
 BuildRequires:	libxfce4util-devel >= 4.10.0
 BuildRequires:	libxfce4ui-devel >= 4.10.0
 BuildRequires:	pkgconfig(libpng)
-BuildRequires:	libjpeg-devel
+BuildRequires:	jpeg-devel
 BuildRequires:	pkgconfig(libpcre)
 BuildRequires:	libexif-devel
 BuildRequires:	pkgconfig(gconf-2.0)
