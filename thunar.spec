@@ -9,7 +9,7 @@
 
 Summary:	New modern file manager for the Xfce Desktop Environment
 Name:		thunar
-Version:	1.6.2
+Version:	1.6.3
 Release:	1
 License:	GPLv2+
 Group:		Graphical desktop/Xfce
@@ -17,21 +17,21 @@ URL:		http://thunar.xfce.org
 Source0:	http://archive.xfce.org/src/xfce/%{name}/%{url_ver}/%{oname}-%{version}.tar.bz2
 BuildRequires:	gtk-doc
 BuildRequires:	pkgconfig(gdk-pixbuf-2.0)
-BuildRequires:	exo-devel >= 0.10.0
+BuildRequires:	pkgconfig(exo-1) >= 0.10.0
 BuildRequires:	pkgconfig(gamin)
 BuildRequires:	perl(XML::Parser)
 BuildRequires:	pkgconfig(dbus-glib-1)
 BuildRequires:	desktop-file-utils
-BuildRequires:	xfce4-panel-devel >= 4.10.0
-BuildRequires:	libxfce4util-devel >= 4.10.0
-BuildRequires:	libxfce4ui-devel >= 4.10.0
+BuildRequires:	pkgconfig(libxfce4panel-1.0) >= 4.10.1
+BuildRequires:	pkgconfig(libxfce4util-1.0) >= 4.10.1
+BuildRequires:	pkgconfig(libxfce4ui-1) >= 4.10.0
 BuildRequires:	pkgconfig(libpng)
 BuildRequires:	jpeg-devel
 BuildRequires:	pkgconfig(libpcre)
-BuildRequires:	libexif-devel
+BuildRequires:	pkgconfig(libexif)
 BuildRequires:	pkgconfig(gconf-2.0)
 BuildRequires:	pkgconfig(libusb)
-BuildRequires:	xfconf-devel >= 4.10.0
+BuildRequires:	pkgconfig(libxfconf-0) >= 4.10.0
 BuildRequires:	pkgconfig(gudev-1.0)
 BuildRequires:	pkgconfig(libnotify)
 BuildRequires:	intltool
@@ -126,7 +126,7 @@ rm -f %{buildroot}%{_datadir}/doc/Thunar/README.thunarrc
 rm -f %{buildroot}%{_datadir}/doc/Thunar/README.volumes
 
 # (tpg) this file is in mandriva-xfce-config package
-#rm -rf %{buildroot}%{_sysconfdir}/xdg/Thunar/uca.xml
+rm -rf %{buildroot}%{_sysconfdir}/xdg/Thunar/uca.xml
 
 %find_lang %{oname} %{oname}.lang
 
@@ -153,7 +153,6 @@ rm -rf %{_datadir}/doc/Thunar/html/*/images
 %{_libdir}/xfce4/panel/plugins/*%{name}-*
 %{_datadir}/xfce4/panel-plugins/thunar-tpa.desktop
 %{_datadir}/gtk-doc/html/thunarx/*
-%{_sysconfdir}/xdg/Thunar/*.xml
 
 %files -n %{libname}
 %{_libdir}/*%{apiversion}.so.%{major}*
