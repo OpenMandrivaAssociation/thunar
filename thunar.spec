@@ -10,7 +10,7 @@
 Summary:	New modern file manager for the Xfce Desktop Environment
 Name:		thunar
 Version:	1.6.3
-Release:	1
+Release:	2
 License:	GPLv2+
 Group:		Graphical desktop/Xfce
 URL:		http://thunar.xfce.org
@@ -22,7 +22,7 @@ BuildRequires:	pkgconfig(gamin)
 BuildRequires:	perl(XML::Parser)
 BuildRequires:	pkgconfig(dbus-glib-1)
 BuildRequires:	desktop-file-utils
-BuildRequires:	pkgconfig(libxfce4panel-1.0) >= 4.10.1
+BuildRequires:	pkgconfig(libxfce4panel-1.0) >= 4.11
 BuildRequires:	pkgconfig(libxfce4util-1.0) >= 4.10.1
 BuildRequires:	pkgconfig(libxfce4ui-1) >= 4.10.0
 BuildRequires:	pkgconfig(libpng)
