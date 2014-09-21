@@ -139,6 +139,7 @@ rm -rf %{_datadir}/doc/Thunar/html/*/images
 %doc docs/README.*
 %dir %{_sysconfdir}/xdg/Thunar
 %dir %{_datadir}/Thunar
+%dir %{_datadir}/%{oname}/sendto
 %{_bindir}/*
 %{_datadir}/applications/*
 %{_iconsdir}/hicolor/*
