@@ -152,7 +152,7 @@ rm -rf %{_datadir}/doc/Thunar/html/*/images
 %{_libdir}/%{oname}/thunar-sendto-email
 %{_mandir}/man1/*
 %{_libdir}/xfce4/panel/plugins/*%{name}-*
-%{_datadir}/xfce4/panel-plugins/thunar-tpa.desktop
+%{_datadir}/xfce4/panel/plugins/thunar-tpa.desktop
 %{_datadir}/gtk-doc/html/thunarx/*
 %{_datadir}/appdata/thunar.appdata.xml
 %{_datadir}/polkit-1/actions/org.xfce.thunar.policy
