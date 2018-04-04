@@ -1,6 +1,7 @@
 %define oname Thunar
 %define iconname thunar.png
-%define url_ver %(echo %{version} | cut -c 1-3)
+%define url_ver %(echo %{version} | cut -d. -f 1,2)
+%define _disable_rebuild_configure 1
 
 %define major 0
 %define apiversion 2
@@ -9,7 +10,7 @@
 
 Summary:	New modern file manager for the Xfce Desktop Environment
 Name:		thunar
-Version:	1.6.6
+Version:	1.6.14
 Release:	1
 License:	GPLv2+
 Group:		Graphical desktop/Xfce
@@ -153,7 +154,6 @@ rm -rf %{_datadir}/doc/Thunar/html/*/images
 %{_mandir}/man1/*
 %{_libdir}/xfce4/panel/plugins/*%{name}-*
 %{_datadir}/xfce4/panel/plugins/thunar-tpa.desktop
-%{_datadir}/gtk-doc/html/thunarx/*
 %{_datadir}/appdata/thunar.appdata.xml
 %{_datadir}/polkit-1/actions/org.xfce.thunar.policy
 
