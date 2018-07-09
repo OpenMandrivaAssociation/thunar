@@ -20,19 +20,18 @@ URL:		http://thunar.xfce.org
 Source0:	http://archive.xfce.org/src/xfce/%{name}/%{url_ver}/%{oname}-%{version}.tar.bz2
 BuildRequires:	gtk-doc
 BuildRequires:	pkgconfig(gdk-pixbuf-2.0)
-BuildRequires:	pkgconfig(exo-1) >= 0.10.0
+BuildRequires:	pkgconfig(exo-2) >= 0.10.0
 BuildRequires:	pkgconfig(gamin)
 BuildRequires:	perl(XML::Parser)
 BuildRequires:	pkgconfig(dbus-glib-1)
 BuildRequires:	desktop-file-utils
-BuildRequires:	pkgconfig(libxfce4panel-1.0) >= 4.11
+BuildRequires:	pkgconfig(libxfce4panel-2.0) >= 4.11
 BuildRequires:	pkgconfig(libxfce4util-1.0) >= 4.10.1
-BuildRequires:	pkgconfig(libxfce4ui-1) >= 4.10.0
+BuildRequires:	pkgconfig(libxfce4ui-2) >= 4.10.0
 BuildRequires:	pkgconfig(libpng)
 BuildRequires:	jpeg-devel
 BuildRequires:	pkgconfig(libpcre)
 BuildRequires:	pkgconfig(libexif)
-BuildRequires:	pkgconfig(gconf-2.0)
 BuildRequires:	pkgconfig(libusb)
 BuildRequires:	pkgconfig(libxfconf-0) >= 4.10.0
 BuildRequires:	pkgconfig(gudev-1.0)
