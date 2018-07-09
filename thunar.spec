@@ -22,6 +22,7 @@ BuildRequires:	gtk-doc
 BuildRequires:	pkgconfig(gdk-pixbuf-2.0)
 BuildRequires:	pkgconfig(exo-2) >= 0.10.0
 BuildRequires:	pkgconfig(gamin)
+BuildRequires:	pkgconfig(gobject-introspection-1.0)
 BuildRequires:	perl(XML::Parser)
 BuildRequires:	pkgconfig(dbus-glib-1)
 BuildRequires:	desktop-file-utils
