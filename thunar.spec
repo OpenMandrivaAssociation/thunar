@@ -4,13 +4,15 @@
 %define _disable_rebuild_configure 1
 
 %define major 0
-%define apiversion 2
+%define apiversion 3
+%define gmajor	3.0
 %define libname %mklibname %{name} %{apiversion} %{major}
+%define girname %mklibname thunarx-gir %{gmajor}
 %define develname %mklibname %{name} -d
 
 Summary:	New modern file manager for the Xfce Desktop Environment
 Name:		thunar
-Version:	1.6.14
+Version:	1.8.1
 Release:	1
 License:	GPLv2+
 Group:		Graphical desktop/Xfce
@@ -76,12 +78,21 @@ Group:		Graphical desktop/Xfce
 %description -n %{libname}
 Libraries for the thunar filemanager.
 
+%package -n %{girname}
+Summary:	GObject Introspection interface library for Thunarx
+Group:		System/Libraries
+Requires:	%{libname} = %{version}-%{release}
+
+%description -n %{girname}
+GObject Introspection interface library for Thunarx.
+
 %package -n %{develname}
 Summary:	Development files for the thunar filemanager
 Group:		Development/Other
 Provides:	%{name}-devel = %{EVRD}
 Requires:	%{libname} = %{version}
 Obsoletes:	%mklibname %{name} 1 2 -d
+Requires:	%{girname} = %{version}-%{release}
 
 %description -n %{develname}
 Development files for the thunar filemanager.
@@ -154,14 +165,20 @@ rm -rf %{_datadir}/doc/Thunar/html/*/images
 %{_mandir}/man1/*
 %{_libdir}/xfce4/panel/plugins/*%{name}-*
 %{_datadir}/xfce4/panel/plugins/thunar-tpa.desktop
-%{_datadir}/appdata/thunar.appdata.xml
+%{_datadir}/metainfo/org.xfce.thunar.appdata.xml
 %{_datadir}/polkit-1/actions/org.xfce.thunar.policy
+%{_userunitdir}/thunar.service
 
 %files -n %{libname}
 %{_libdir}/*%{apiversion}.so.%{major}*
 
+%files -n %{girname}
+%{_libdir}/girepository-1.0/Thunarx-%{gmajor}.typelib
+
 %files -n %{develname}
+%doc %{_datadir}/gtk-doc/html/thunarx/
 %dir %{_includedir}/thunarx-%{apiversion}
 %{_includedir}/thunarx-%{apiversion}/*
 %{_libdir}/lib*.so
 %{_libdir}/pkgconfig/*.pc
+%{_datadir}/gir-1.0/Thunarx-%{gmajor}.gir
