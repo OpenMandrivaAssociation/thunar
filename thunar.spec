@@ -12,7 +12,7 @@
 
 Summary:	New modern file manager for the Xfce Desktop Environment
 Name:		thunar
-Version:	1.8.1
+Version:	1.8.8
 Release:	1
 License:	GPLv2+
 Group:		Graphical desktop/Xfce
@@ -119,10 +119,10 @@ popd
     --enable-gio-unix \
     --enable-gudev
 
-%make
+%make_build
 
 %install
-%makeinstall_std
+%make_install
 
 desktop-file-install \
     --remove-key="Encoding" \
