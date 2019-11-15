@@ -17,7 +17,7 @@ Release:	1
 License:	GPLv2+
 Group:		Graphical desktop/Xfce
 URL:		http://thunar.xfce.org
-Source0:	http://archive.xfce.org/src/xfce/%{name}/%{url_ver}/%{oname}-%{version}.tar.bz2
+Source0:	http://archive.xfce.org/src/xfce/%{name}/%{url_ver}/%{name}-%{version}.tar.bz2
 BuildRequires:	gtk-doc
 BuildRequires:	pkgconfig(gdk-pixbuf-2.0)
 BuildRequires:	pkgconfig(exo-2) >= 0.10.0
@@ -98,7 +98,7 @@ Requires:	%{girname} = %{version}-%{release}
 Development files for the thunar filemanager.
 
 %prep
-%setup -qn %{oname}-%{version}
+%setup -qn %{name}-%{version}
 
 %build
 # re-generate it
