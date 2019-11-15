@@ -130,7 +130,7 @@ desktop-file-install \
     --remove-category="Application" \
     --add-only-show-in="XFCE" \
     --remove-mime-type="x-directory/normal;x-directory/gnome-default-handler" \
-    --dir %{buildroot}%{_datadir}/applications %{buildroot}%{_datadir}/applications/Thunar*
+    --dir %{buildroot}%{_datadir}/applications %{buildroot}%{_datadir}/applications/thunar*
 
 # Remove unneeded files
 rm -f %{buildroot}%{_libdir}/thunarx-1/thunar-uca.la
