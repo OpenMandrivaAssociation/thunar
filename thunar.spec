@@ -149,8 +149,8 @@ rm -rf %{_datadir}/doc/thunar/html/*/images
 %files -f %{name}.lang
 %doc AUTHORS FAQ HACKING README THANKS TODO
 %doc docs/README.*
-%dir %{_sysconfdir}/xdg/thunar
-%dir %{_datadir}/thunar
+%dir %{_sysconfdir}/xdg/Thunar
+%dir %{_datadir}/Thunar
 %dir %{_datadir}/%{oname}/sendto
 %{_bindir}/*
 %{_datadir}/applications/*
@@ -159,9 +159,9 @@ rm -rf %{_datadir}/doc/thunar/html/*/images
 %{_datadir}/dbus-1/services/*
 %{_datadir}/doc/thunar
 %{_datadir}/Thunar/sendto/thunar-sendto-email.desktop
-%{_libdir}/%{name}/ThunarBulkRename
+%{_libdir}/%{oname}/ThunarBulkRename
 %{_libdir}/thunarx-%{apiversion}
-%{_libdir}/%{name}/thunar-sendto-email
+%{_libdir}/%{oname}/thunar-sendto-email
 %{_mandir}/man1/*
 %{_libdir}/xfce4/panel/plugins/*%{name}-*
 %{_datadir}/xfce4/panel/plugins/thunar-tpa.desktop
@@ -173,7 +173,7 @@ rm -rf %{_datadir}/doc/thunar/html/*/images
 %{_libdir}/*%{apiversion}.so.%{major}*
 
 %files -n %{girname}
-%{_libdir}/girepository-1.0/thunarx-%{gmajor}.typelib
+%{_libdir}/girepository-1.0/Thunarx-%{gmajor}.typelib
 
 %files -n %{develname}
 %doc %{_datadir}/gtk-doc/html/thunarx/
