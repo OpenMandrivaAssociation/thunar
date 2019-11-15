@@ -140,28 +140,28 @@ rm -f %{buildroot}%{_datadir}/doc/Thunar/README.volumes
 # (tpg) this file is in mandriva-xfce-config package
 rm -rf %{buildroot}%{_sysconfdir}/xdg/Thunar/uca.xml
 
-%find_lang %{oname} %{oname}.lang
+%find_lang %{name} %{name}.lang
 
 #gw https://qa.mandriva.com/show_bug.cgi?id=61131
 %pre
-rm -rf %{_datadir}/doc/Thunar/html/*/images
+rm -rf %{_datadir}/doc/thunar/html/*/images
 
-%files -f %{oname}.lang
+%files -f %{name}.lang
 %doc AUTHORS FAQ HACKING README THANKS TODO
 %doc docs/README.*
-%dir %{_sysconfdir}/xdg/Thunar
-%dir %{_datadir}/Thunar
+%dir %{_sysconfdir}/xdg/thunar
+%dir %{_datadir}/thunar
 %dir %{_datadir}/%{oname}/sendto
 %{_bindir}/*
 %{_datadir}/applications/*
 %{_iconsdir}/hicolor/*
 %{_datadir}/pixmaps/*
 %{_datadir}/dbus-1/services/*
-%{_datadir}/doc/Thunar
+%{_datadir}/doc/thunar
 %{_datadir}/Thunar/sendto/thunar-sendto-email.desktop
-%{_libdir}/%{oname}/ThunarBulkRename
+%{_libdir}/%{name}/ThunarBulkRename
 %{_libdir}/thunarx-%{apiversion}
-%{_libdir}/%{oname}/thunar-sendto-email
+%{_libdir}/%{name}/thunar-sendto-email
 %{_mandir}/man1/*
 %{_libdir}/xfce4/panel/plugins/*%{name}-*
 %{_datadir}/xfce4/panel/plugins/thunar-tpa.desktop
@@ -173,7 +173,7 @@ rm -rf %{_datadir}/doc/Thunar/html/*/images
 %{_libdir}/*%{apiversion}.so.%{major}*
 
 %files -n %{girname}
-%{_libdir}/girepository-1.0/Thunarx-%{gmajor}.typelib
+%{_libdir}/girepository-1.0/thunarx-%{gmajor}.typelib
 
 %files -n %{develname}
 %doc %{_datadir}/gtk-doc/html/thunarx/
