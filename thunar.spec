@@ -110,9 +110,9 @@ Development files for the thunar filemanager.
 
 %build
 # re-generate it
-pushd thunar
-exo-csource --name=thunar_window_ui thunar-window-ui.xml > thunar-window-ui.h
-popd
+#pushd thunar
+#exo-csource --name=thunar_window_ui thunar-window-ui.xml > thunar-window-ui.h
+#popd
 
 %configure \
     --enable-dbus \
