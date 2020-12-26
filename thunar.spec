@@ -49,7 +49,7 @@ BuildRequires:	intltool
 BuildRequires:	desktop-file-utils
 Requires:	shared-mime-info >= 0.15
 Requires:	exo
-Requires:	thunar-volman
+Recommends:	thunar-volman
 Requires:	%{libname} = %{version}
 Requires(post):	desktop-file-utils >= 0.10
 Requires(postun): desktop-file-utils >= 0.10
