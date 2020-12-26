@@ -12,17 +12,25 @@
 
 Summary:	New modern file manager for the Xfce Desktop Environment
 Name:		thunar
-Version:	1.8.16
+Version:	4.16.0
 Release:	1
 License:	GPLv2+
 Group:		Graphical desktop/Xfce
 URL:		http://thunar.xfce.org
 Source0:	http://archive.xfce.org/src/xfce/%{name}/%{url_ver}/%{name}-%{version}.tar.bz2
+
 BuildRequires:	gtk-doc
 BuildRequires:	pkgconfig(gdk-pixbuf-2.0)
 BuildRequires:	pkgconfig(exo-2) >= 0.10.0
 BuildRequires:	pkgconfig(gamin)
 BuildRequires:	pkgconfig(gobject-introspection-1.0)
+BuildRequires:	pkgconfig(gio-2.0)
+BuildRequires:	pkgconfig(gio-unix-2.0)
+BuildRequires:	pkgconfig(glib-2.0)
+BuildRequires:	pkgconfig(gmodule-2.0)
+BuildRequires:	pkgconfig(gobject-introspection-1.0)
+BuildRequires:	pkgconfig(gthread-2.0)
+BuildRequires:	pkgconfig(gtk+-3.0)
 BuildRequires:	perl(XML::Parser)
 BuildRequires:	pkgconfig(dbus-glib-1)
 BuildRequires:	desktop-file-utils
@@ -102,9 +110,9 @@ Development files for the thunar filemanager.
 
 %build
 # re-generate it
-pushd thunar
-exo-csource --name=thunar_window_ui thunar-window-ui.xml > thunar-window-ui.h
-popd
+#pushd thunar
+#exo-csource --name=thunar_window_ui thunar-window-ui.xml > thunar-window-ui.h
+#popd
 
 %configure \
     --enable-dbus \
@@ -147,7 +155,7 @@ rm -rf %{buildroot}%{_sysconfdir}/xdg/Thunar/uca.xml
 rm -rf %{_datadir}/doc/thunar/html/*/images
 
 %files -f %{name}.lang
-%doc AUTHORS FAQ HACKING README THANKS TODO
+%doc AUTHORS FAQ HACKING README* THANKS
 %doc docs/README.*
 %dir %{_sysconfdir}/xdg/Thunar
 %dir %{_datadir}/Thunar
@@ -155,11 +163,11 @@ rm -rf %{_datadir}/doc/thunar/html/*/images
 %{_bindir}/*
 %{_datadir}/applications/*
 %{_iconsdir}/hicolor/*
-%{_datadir}/pixmaps/*
+#{_datadir}/pixmaps/*
 %{_datadir}/dbus-1/services/*
 %{_datadir}/doc/thunar
 %{_datadir}/Thunar/sendto/thunar-sendto-email.desktop
-%{_libdir}/%{oname}/ThunarBulkRename
+#{_libdir}/%{oname}/ThunarBulkRename
 %{_libdir}/thunarx-%{apiversion}
 %{_libdir}/%{oname}/thunar-sendto-email
 %{_mandir}/man1/*
