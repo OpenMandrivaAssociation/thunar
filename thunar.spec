@@ -12,7 +12,7 @@
 
 Summary:	New modern file manager for the Xfce Desktop Environment
 Name:		thunar
-Version:	4.16.10
+Version:	4.16.11
 Release:	1
 License:	GPLv2+
 Group:		Graphical desktop/Xfce
@@ -136,7 +136,6 @@ desktop-file-install \
     --remove-key="Encoding" \
     --add-category="FileManager;FileTools" \
     --remove-category="Application" \
-    --add-only-show-in="XFCE" \
     --remove-mime-type="x-directory/normal;x-directory/gnome-default-handler" \
     --dir %{buildroot}%{_datadir}/applications %{buildroot}%{_datadir}/applications/thunar*
 
