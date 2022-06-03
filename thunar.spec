@@ -163,7 +163,6 @@ rm -rf %{_datadir}/doc/thunar/html/*/images
 %{_iconsdir}/hicolor/*
 #{_datadir}/pixmaps/*
 %{_datadir}/dbus-1/services/*
-%{_datadir}/doc/thunar
 %{_datadir}/Thunar/sendto/thunar-sendto-email.desktop
 #{_libdir}/%{oname}/ThunarBulkRename
 %{_libdir}/thunarx-%{apiversion}
