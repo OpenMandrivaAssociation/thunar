@@ -155,7 +155,6 @@ rm -rf %{_datadir}/doc/thunar/html/*/images
 
 %files -f %{name}.lang
 %doc AUTHORS FAQ HACKING README* THANKS
-%doc docs/README.*
 %dir %{_sysconfdir}/xdg/Thunar
 %dir %{_datadir}/Thunar
 %dir %{_datadir}/%{oname}/sendto
