@@ -161,6 +161,7 @@ rm -rf %{_datadir}/doc/thunar/html/*/images
 %dir %{_datadir}/%{oname}/sendto
 %{_bindir}/*
 %{_datadir}/applications/*
+%{_sysconfdir}/xdg/Thunar/uca.xml
 %{_iconsdir}/hicolor/*
 #{_datadir}/pixmaps/*
 %{_datadir}/dbus-1/services/*
@@ -183,6 +184,7 @@ rm -rf %{_datadir}/doc/thunar/html/*/images
 
 %files -n %{develname}
 %doc %{_datadir}/gtk-doc/html/thunarx/
+%doc %{_datadir}/gtk-doc/html/thunar/
 %dir %{_includedir}/thunarx-%{apiversion}
 %{_includedir}/thunarx-%{apiversion}/*
 %{_libdir}/lib*.so
