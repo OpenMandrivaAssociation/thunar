@@ -12,7 +12,7 @@
 
 Summary:	New modern file manager for the Xfce Desktop Environment
 Name:		thunar
-Version:	4.16.11
+Version:	4.17.12
 Release:	1
 License:	GPLv2+
 Group:		Graphical desktop/Xfce
@@ -39,7 +39,7 @@ BuildRequires:	pkgconfig(libxfce4util-1.0) >= 4.10.1
 BuildRequires:	pkgconfig(libxfce4ui-2) >= 4.10.0
 BuildRequires:	pkgconfig(libpng)
 BuildRequires:	jpeg-devel
-BuildRequires:	pkgconfig(libpcre)
+BuildRequires:	pkgconfig(libpcre2-8)
 BuildRequires:	pkgconfig(libexif)
 BuildRequires:	pkgconfig(libusb)
 BuildRequires:	pkgconfig(libxfconf-0) >= 4.10.0
@@ -145,7 +145,7 @@ rm -f %{buildroot}%{_datadir}/doc/Thunar/README.thunarrc
 rm -f %{buildroot}%{_datadir}/doc/Thunar/README.volumes
 
 # (tpg) this file is in mandriva-xfce-config package
-rm -rf %{buildroot}%{_sysconfdir}/xdg/Thunar/uca.xml
+#rm -rf %{buildroot}%{_sysconfdir}/xdg/Thunar/uca.xml
 
 %find_lang %{name} %{name}.lang
 
