@@ -12,12 +12,12 @@
 
 Summary:	New modern file manager for the Xfce Desktop Environment
 Name:		thunar
-Version:	4.18.10
+Version:	4.18.11
 Release:	1
 License:	GPLv2+
 Group:		Graphical desktop/Xfce
-URL:		http://thunar.xfce.org
-Source0:	http://archive.xfce.org/src/xfce/%{name}/%{url_ver}/%{name}-%{version}.tar.bz2
+URL:		https://thunar.xfce.org
+Source0:	https://archive.xfce.org/src/xfce/%{name}/%{url_ver}/%{name}-%{version}.tar.bz2
 
 BuildRequires:	gtk-doc
 BuildRequires:	pkgconfig(gdk-pixbuf-2.0)
