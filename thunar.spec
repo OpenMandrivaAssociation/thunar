@@ -6,13 +6,15 @@
 %define major 0
 %define apiversion 3
 %define gmajor	3.0
-%define libname %mklibname %{name} %{apiversion} %{major}
-%define girname %mklibname thunarx-gir %{gmajor}
+%define libname %mklibname %{name}
+%define oldlibname %mklibname %{name} 3 0
+%define girname %mklibname thunarx-gir
+%define oldgirname %mklibname thunarx-gir 3.0
 %define develname %mklibname %{name} -d
 
 Summary:	New modern file manager for the Xfce Desktop Environment
 Name:		thunar
-Version:	4.18.11
+Version:	4.20.0
 Release:	1
 License:	GPLv2+
 Group:		Graphical desktop/Xfce
@@ -35,15 +37,15 @@ BuildRequires:  pkgconfig(harfbuzz-gobject)
 BuildRequires:	perl(XML::Parser)
 BuildRequires:	pkgconfig(dbus-glib-1)
 BuildRequires:	desktop-file-utils
-BuildRequires:	pkgconfig(libxfce4panel-2.0) >= 4.11
-BuildRequires:	pkgconfig(libxfce4util-1.0) >= 4.10.1
-BuildRequires:	pkgconfig(libxfce4ui-2) >= 4.10.0
+BuildRequires:	pkgconfig(libxfce4panel-2.0) >= 4.20.0
+BuildRequires:	pkgconfig(libxfce4util-1.0) >= 4.20.0
+BuildRequires:	pkgconfig(libxfce4ui-2) >= 4.20.0
 BuildRequires:	pkgconfig(libpng)
 BuildRequires:	jpeg-devel
 BuildRequires:	pkgconfig(libpcre2-8)
 BuildRequires:	pkgconfig(libexif)
 BuildRequires:	pkgconfig(libusb)
-BuildRequires:	pkgconfig(libxfconf-0) >= 4.10.0
+BuildRequires:	pkgconfig(libxfconf-0) >= 4.20.0
 BuildRequires:	pkgconfig(gudev-1.0)
 BuildRequires:	pkgconfig(libnotify)
 BuildRequires:	intltool
@@ -83,6 +85,7 @@ extend the file and folder context menus with their own custom actions.
 %package -n %{libname}
 Summary:	Libraries for the thunar filemanager
 Group:		Graphical desktop/Xfce
+%rename %{oldlibname}
 
 %description -n %{libname}
 Libraries for the thunar filemanager.
@@ -91,6 +94,7 @@ Libraries for the thunar filemanager.
 Summary:	GObject Introspection interface library for Thunarx
 Group:		System/Libraries
 Requires:	%{libname} = %{version}-%{release}
+%rename %{oldgirname}
 
 %description -n %{girname}
 GObject Introspection interface library for Thunarx.
@@ -107,7 +111,7 @@ Requires:	%{girname} = %{version}-%{release}
 Development files for the thunar filemanager.
 
 %prep
-%setup -qn %{name}-%{version}
+%autosetup -p1
 
 %build
 # re-generate it
