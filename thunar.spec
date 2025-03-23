@@ -15,11 +15,14 @@
 Summary:	New modern file manager for the Xfce Desktop Environment
 Name:		thunar
 Version:	4.20.2
-Release:	1
+Release:	2
 License:	GPLv2+
 Group:		Graphical desktop/Xfce
 URL:		https://thunar.xfce.org
 Source0:	https://archive.xfce.org/src/xfce/%{name}/%{url_ver}/%{name}-%{version}.tar.bz2
+
+# Not yet upstreamed, adding jxl, avif, and webp as allowed wallpaper mimemtypes
+Patch0:    https://gitlab.xfce.org/xfce/thunar/-/merge_requests/620.patch
 
 BuildRequires:	gtk-doc
 BuildRequires:	pkgconfig(gdk-pixbuf-2.0)
