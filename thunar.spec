@@ -14,8 +14,8 @@
 
 Summary:	New modern file manager for the Xfce Desktop Environment
 Name:		thunar
-Version:	4.20.2
-Release:	2
+Version:	4.20.3
+Release:	1
 License:	GPLv2+
 Group:		Graphical desktop/Xfce
 URL:		https://thunar.xfce.org
