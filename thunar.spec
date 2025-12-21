@@ -24,6 +24,11 @@ Source0:	https://archive.xfce.org/src/xfce/%{name}/%{url_ver}/%{name}-%{version}
 # Not yet upstreamed, adding jxl, avif, and webp as allowed wallpaper mimemtypes
 Patch0:    https://gitlab.xfce.org/xfce/thunar/-/merge_requests/620.patch
 
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 BuildRequires:	gtk-doc
 BuildRequires:	pkgconfig(gdk-pixbuf-2.0)
 BuildRequires:	pkgconfig(exo-2) >= 0.10.0
